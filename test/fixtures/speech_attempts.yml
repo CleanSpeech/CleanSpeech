@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  speech_name: MyString
+  time: 1
+
+two:
+  speech_name: MyString
+  time: 1
