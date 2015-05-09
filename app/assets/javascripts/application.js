@@ -74,14 +74,15 @@ $(function () {
 		console.log ("Transcript.length : " + transcript.length);
 		for (var k = 0; k < fillers.length; k++ ){
 			var filler = fillers[k];
+			counts[k] = 0;
 			for (var i = 0; i < transcript.length; i++){
 				if (transcript[i] == filler){
 					console.log(transcript[i]);
-					counts[k] +=1;
+					counts[k] += 1;
 				}
 			} 
 		}
-		console.log("Counts: " + counts);
+		console.log("Counts: ", counts);
 		return counts;
 	}
 	
