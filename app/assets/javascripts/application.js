@@ -42,15 +42,24 @@ $(function () {
 			var wordArray = transcript.split(" ");
 			//puts the transcript on the page
 
-			var results = function(){
+			var showResults = function(){
 				str = "";
-				for (var x; x < fillers.length; x++){
-					str += fillers[x] + ": " + fillerWordCount[x] + "<br>";
+				for (var x = 0; x < fillers.length; x++){
+					console.log("Fillers[x]: " + fillers[x]);
+					str += (fillers[x] + ": " + fillerWordCounts[x] + "<br>");
 				}
+				console.log("str : " + str);
+				return str;
 			}
+
+
+			//this line works and goes in .html()
+//fillers[0] + fillerWordCounts[0] + "<br> So: " + fillerWordCounts[1] + "<br> Really: " + fillerWordCounts[2]
+
 			$("#textHere").html(transcript);
-			var fillerWordCounts = pickFillers(wordArray, fillers)
-			$("#count").html(fillers[0] + fillerWordCounts[0] + "<br> So: " + fillerWordCounts[1] + "<br> Really: " + fillerWordCounts[2]);
+			var fillerWordCounts = pickFillers(wordArray, fillers);
+			// results();
+			$("#count").html(showResults());
 			console.log("Inside: " + transArray);
 
 		}
