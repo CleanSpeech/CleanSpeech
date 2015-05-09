@@ -17,6 +17,20 @@
 
 $(function () {
 
+// var recognition = new webkitSpeechRecognition();
+// recognition.continuous = true;
+// recognition.interimResults = true;
+// recognition.onresult = function(event) { 
+//   console.log(event) 
+//   console.log(results[0][0].transcript)
+// }
+
+
+var recognition = new webkitSpeechRecognition();
+recognition.onresult = function(event) { 
+  console.log(event) 
+}
+recognition.start();
 	window.SpeechRecognition = window.SpeechRecognition       ||
 	window.webkitSpeechRecognition || null;
  
@@ -38,8 +52,9 @@ $(function () {
 
       for (var i = event.resultIndex; i < event.results.length; i++) {
         if (event.results[i].isFinal) {
-          transcription.textContent = event.results[i][0].transcript + ' (Confidence: ' + event.results[i][0].confidence + ')';
-		console.log(transcription.textContent)	        
+          transcription.textContent = event.results[i][0].transcript;
+		  console.log(transcription.textContent);
+		  log.innerHTML = transcription.textContent;        
         } else {
           transcription.textContent += event.results[i][0].transcript;
         }
@@ -56,8 +71,8 @@ $(function () {
       recognizer.interimResults = document.querySelector('input[name="recognition-type"][value="interim"]').checked;
 
       try {
-        recognizer.start();
-        log.innerHTML = 'Recognition started' + '<br />' + log.innerHTML;
+        recognizer.start(); 
+        log.innerHTML = 'Recognition started' + '<br />' + transcription.textContent;
       } catch(ex) {
         log.innerHTML = 'Recognition error: ' + ex.message + '<br />' + log.innerHTML;
       }
