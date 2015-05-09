@@ -42,8 +42,15 @@ $(function () {
 			var wordArray = transcript.split(" ");
 			//puts the transcript on the page
 
+			var results = function(){
+				str = "";
+				for (var x; x < fillers.length; x++){
+					str += fillers[x] + ": " + fillerWordCount[x] + "<br>";
+				}
+			}
 			$("#textHere").html(transcript);
-			$("#count").html(pickFillers(wordArray, fillers));
+			var fillerWordCounts = pickFillers(wordArray, fillers)
+			$("#count").html(fillers[0] + fillerWordCounts[0] + "<br> So: " + fillerWordCounts[1] + "<br> Really: " + fillerWordCounts[2]);
 			console.log("Inside: " + transArray);
 
 		}
@@ -56,15 +63,25 @@ $(function () {
 
 	});
 
-
-	
+	//grabs the form where users enter words
+	var $addWordForm = $("#fillerWordInput");
+	//when user clicks submit...
+	$addWordForm.on("submit", function (event) {
+		//so that the page doesn't reload onclick
+		event.preventDefault();
+		var content = $("#newFiller").val();
+		fillers.push(content);
+		console.log(fillers);
+		$("#displayFillers").append(content + "<br>");
+	});
 		
 		//stops the recognition 
 
 // this function is going to find our filler 
 // words in the array of total words
 // and count them	
-	var fillers = ["like", "so", "really"];
+	var fillers = [];
+	//var fillers = ["like", "so", "really"];
 	var pickFillers = function(transcript, fillers){
 		console.log("transcript: " + transcript);
 		// initializes an array that's the 
@@ -72,9 +89,11 @@ $(function () {
 		var counts = new Array(fillers.length);
 		console.log("counts.length : " + counts.length);
 		console.log ("Transcript.length : " + transcript.length);
+		//cycles through filler words
 		for (var k = 0; k < fillers.length; k++ ){
 			var filler = fillers[k];
 			counts[k] = 0;
+			//cycles through whole transcript
 			for (var i = 0; i < transcript.length; i++){
 				if (transcript[i] == filler){
 					console.log(transcript[i]);
