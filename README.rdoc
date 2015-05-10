@@ -1,5 +1,7 @@
 Emily's notes for this version:
 
+DEVISE:
+
 Devise is implemented and will work for sign_in and sign_out. Now we need to customize it (i.e. incorporate flash messages, controller methods for sign_in verses not_signed in, tracking session data, etc)
 
 VIEWS:
