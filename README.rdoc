@@ -28,3 +28,31 @@ Things you may want to cover:
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
+
+mreekers: Steps I have added for models rspec branch:
+
+(1) installed gem rspec-rails in gemfile group :development (**done**)
+(2) installed gem ffaker (**done**)
+(3) generated configurations with rails generate rspec:install (**done**)
+(4) created spec file for our models with
+	1. rails generate rspec:model user (**done**)
+	2. rails generate rspec:model word (**done**)
+	3. rails generate rspec:model speech_attempt 
+	4. rails generate rspec:model users_word
+	5. rails generate rspec:model users_words_speech_attempt
+(5) Testing User model for new users(**done**)
+(6) Testing Word model for new words (**done**)
+(7) Testing Speech_attempt model for new speech attempts (**done**)
+(8) Testing Users_word model for new user words (**done**)
+(9) Testing Users_words_speech_attempt model for new users words speech attempts (**done**)
+
+(10) testing for valid data entries with the attributes of the models 
+
+
+
+
+
+
+
+
+
