@@ -20,28 +20,30 @@
 $(function () {
 
 	//This section is what runs our speech recognition tool
-	
 	var recognition = new webkitSpeechRecognition();
 	recognition.continuous = true;
 	//all the words are going to go 
 	//into this array individually
-	var transArray = ["hello"];
+	var transArray = [""];
 
 	//grabs our button that starts listening
 	$("#testButton").click(function (){
+		//starts the speech timer
+		timer();
 		//defines the recognition function --
 		//not sure if this needs to be 
-		//inside the onclick either. Ask.
+		//inside the onclick. Ask.
 		recognition.onresult = function(event) { 
+			// "event.results[0][0].transcript" is our transcript of all the words
 			var transcript = event.results[0][0].transcript;
-			//recognition.continuous = true;
-			//"event.results[0][0].transcript" is our transcript of all the words
 			
-			//pushes the transcript into the trans array
-			//as indivudual words
+			// This pushes the transcript into the trans array
+			// as indivudual words
 			var wordArray = transcript.split(" ");
-			//puts the transcript on the page
-
+			
+			// puts the words the user entered
+			// onto the page next to the number of 
+			// times the user used them
 			var showResults = function(){
 				str = "";
 				for (var x = 0; x < fillers.length; x++){
@@ -53,16 +55,15 @@ $(function () {
 			}
 
 
-			//this line works and goes in .html()
-//fillers[0] + fillerWordCounts[0] + "<br> So: " + fillerWordCounts[1] + "<br> Really: " + fillerWordCounts[2]
-
+			
+			//puts the transcript on the page
 			$("#textHere").html(transcript);
 			var fillerWordCounts = pickFillers(wordArray, fillers);
-			// results();
 			$("#count").html(showResults());
 			console.log("Inside: " + transArray);
 
 		}
+		//stops the recognition 
 		$("#stopButton").click(function(){
 				recognition.stop();
 			});
@@ -84,7 +85,6 @@ $(function () {
 		$("#displayFillers").append(content + "<br>");
 	});
 		
-		//stops the recognition 
 
 // this function is going to find our filler 
 // words in the array of total words
@@ -114,8 +114,42 @@ $(function () {
 		return counts;
 	}
 	
+function timer(){
+	var s = 1;
+	var m = 0;
+	var myVar = setInterval(function(){myTimer()},1000);
+	$("#timer").html("00:00");
+	function myTimer() {
+	  if (s < 60){
+	    if (s < 10){
+	      $("#timer").html(m + ":0" + s);
+	      s+=1;
+	    } else {
+	      $("#timer").html(m + ":" + s);
+	      s+=1;
+	    }
+	  } else {
+	      s = 1;
+	      m += 1;
+	      $("#timer").html(m + ":0" + s);
+	  }
+	}
+	$("#stopButton").click(function(){
+				clearInterval(myVar);
+			});
+}
 
 
+// To Do:
+
+// -- chain recognition starts until the user presses stop
+// -- FOR ANYONE READING MY COMMENTS, I AM SO SORRY. 
+// IT'S SO THAT PEOPLE STOP SAYING THESE WORDS.
+// -- need to fix : fuck, fucking, fucker, motherfucker, whore, shit, 
+// asshole, cunt, asswipe, bitches, blow job,
+// bullshit, bumblefuck, cockhead, cocksucker, cum, 
+// cumslut, slut, dickface, dicksucker, dipshit, dumbfuck (but not dumbshit??)
+// fag, fagbag, fagfucker, faggot, motherfucking, nigger, nigga, niggers,
 	
 
 });
