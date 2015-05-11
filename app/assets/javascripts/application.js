@@ -57,6 +57,7 @@ $(function () {
 				console.log("str : " + str);
 
 				console.log("stopClicked: " + stopClicked);
+				// RESET THING THAT DOESN'T WORK AGAIN
 				// if (!stopClicked){
 				// 		console.log("stopping");
 				// 		recognition.stop().then(function (thing){
@@ -83,6 +84,7 @@ $(function () {
 
 	}); //end onclick start
 
+	// RESET THING THAT DOESN'T WORK
 	// recognition.onaudioend = function (event){
 	// 	console.log("stopClicked: " + stopClicked);
 	// 	if (!stopClicked){
@@ -106,6 +108,7 @@ $(function () {
 		event.preventDefault();
 		var content = $("#newFiller").val();
 		fillers.push(content);
+		console.log(fillers);
 		$("#displayFillers").append(content + "<br>");
 	});
 		
@@ -114,7 +117,7 @@ $(function () {
 // words in the array of total words
 // and count them	
 	var fillers = [];
-	//var fillers = ["like", "so", "really"];
+
 	var pickFillers = function(transcript, fillers){
 		//console.log("transcript: " + transcript);
 		// initializes an array that's the 
@@ -122,17 +125,33 @@ $(function () {
 		var counts = new Array(fillers.length);
 		//console.log("counts.length : " + counts.length);
 		//console.log ("Transcript.length : " + transcript.length);
+
 		//cycles through filler words
 		for (var k = 0; k < fillers.length; k++ ){
 			var filler = fillers[k];
 			counts[k] = 0;
-			//cycles through whole transcript
-			for (var i = 0; i < transcript.length; i++){
-				if (transcript[i] == filler){
-					console.log(transcript[i]);
-					counts[k] += 1;
+			//if there's a space in the filler word...
+			//which means that there are two words in the filler
+			if (filler.indexOf(" ") != -1){
+				var doubleWord = filler.split(" ");
+				var d = doubleWord[0];
+				var w = doubleWord[1];
+				for (var i = 0; i < transcript.length-1; i++){
+					// second comparison
+					var j = i + 1;
+					if (d == transcript[i] && w == transcript[j]){
+						counts[k] += 1;
+					}
 				}
-			} 
+			} else {
+				//cycles through whole transcript
+				for (var i = 0; i < transcript.length; i++){
+					if (transcript[i] == filler){
+						console.log(transcript[i]);
+						counts[k] += 1;
+					}
+				} 
+			}
 		}
 		//console.log("Counts: ", counts);
 		return counts;
@@ -142,7 +161,7 @@ $(function () {
 		var s = -1;
 		var m = 0;
 		var timeCount = 0;
-		var myVar = setInterval(function(){myTimer()},1000);
+		var newTimer = setInterval(function(){myTimer()},1000);
 		
 		$("#timer").html("00:00");
 		function myTimer() {
@@ -173,7 +192,7 @@ $(function () {
 		};
 
 		$("#stopButton").click(function(){
-			clearInterval(myVar);
+			clearInterval(newTimer);
 		});
 	}; // end
 
@@ -182,7 +201,6 @@ $(function () {
 
 // -- Figure out data structures for collecting all words
 //    vs filler words
-// -- chain recognition starts until the user presses stop
 // -- FOR ANYONE READING MY COMMENTS, I AM SO SORRY. 
 // 		IT'S SO THAT PEOPLE STOP SAYING THESE WORDS.
 // -- need to fix : fuck, fucking, fucker, motherfucker, whore, shit, 
