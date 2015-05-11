@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -8,6 +10,11 @@ class User < ActiveRecord::Base
 	has_many :words, :through => :users_words
 	has_many :users_words
 	has_many :speech_attempts
+
+	# attr_accessible :email, :password_digest
+
+	validates :email, presence: true
+	validates :password_digest, presence: true
 
   def self.from_omniauth(auth)
     if !where(email: auth.info.email).empty?

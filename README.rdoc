@@ -1,19 +1,1 @@
-Emily's notes for this version:
 
-DEVISE:
-
-Devise is implemented and will work for sign_in and sign_out. Now we need to customize it (i.e. incorporate flash messages, controller methods for sign_in verses not_signed in, tracking session data, etc)
-
-VIEWS:
-
-Added a home folder that contains an index page that can be used as the home page (does not require logging in).
-
-Added a users folder that includes the pages Jessica built (minus the sign_in and sign_out pages). The views in this page are restricted to current_users, as indicated in the users_controller. Of course we can change this as we see fit.
-
-Added a set of devise views that we can customize. In the folder you'll find forms for new user, sign in, etc. 
-
-LAYOUT:
-
-Changed the route.rb file. Run rake routes in console to see full structure.
-
-Added a _nav_link file to the layouts folder so that we can easily see the various paths for user sessions. We might consider modifying this file for use as a partial. Jessica, perhaps you could provide guidance here.
