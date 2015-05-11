@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Index</title>
+</head>
+<body>
+
+
+	<!-- Method here if the user is signed in or not -->
+	<!-- <h2> Welcome, <%= user.email  %>!</h2> -->
+
+
+	<ul>
+	<li><%= link_to 'Sign in', new_user_session_path %></li>
+  <li><%= link_to 'Sign up', new_user_registration_path %></li>
+</ul>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-md-8">
+			<h3> Use CleanSpeech to get rid of<br>
+			words from your vocabulary</h3>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="container box">
+	
+			<div class="row">
+				<div class="col-xs-12 col-xs-6">
+					<h3> Clean out<br>
+					filler words</h3>
+						<div class="row">
+							<div class="col-xs-4">
+							<!-- Insert Image here -->
+								<div id="mic-start-image">
+									Microphone
+								</div>
+							</div>	
+						</div>		
+					</div>
+				</div>
+			</div>
+		
+			<div class="row">
+				<div class="col-xs-12 col-xs-6">
+				<h3> Improve your<br>
+				speech pattern</h3>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Here will we will do a .each to show attempts -->
+	<div id="attempt-graph">
+	</div>
+
+	
+
+
+
+
+</body>
+</html>
