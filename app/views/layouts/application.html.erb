@@ -23,21 +23,21 @@
 <nav class="navbar navbar-default navbar-static-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false" aria-controls"navbar">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">CleanSpeech</a>
+      <a class="navbar-brand" href="/"><img src="/images/Clean_speechlogo.png"></a>
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
 
         <!-- Jessica: I added links to user forms so that we can see how they work. I realize we may not want a sign out link - feel free to remove. Not sure what 'users' is supposed to link to. -Emily -->
         
-        <li class="active"><a href="/users">Users</a></li>
-        <li class="active"><%= link_to "Sign in", new_user_session_path %></li>
+        
+        <li class="active"><%= link_to "Log in", new_user_session_path %></li>
         <li class="active"><%= link_to "Sign up", new_user_registration_path %></li>
         <li class="active"><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
       </ul>
