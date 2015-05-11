@@ -48,6 +48,9 @@ group :development, :test do
   # ffaker gem since we do not have data yet to play with 
   gem 'ffaker'
 
+  # installing factory_girl_rails to create factories to test models
+  gem "factory_girl_rails", "~> 4.0"
+
 
 end
 

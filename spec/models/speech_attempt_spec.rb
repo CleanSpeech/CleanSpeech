@@ -6,4 +6,13 @@ RSpec.describe SpeechAttempt, :type => :model do
   		@speechattempt = SpeechAttempt.new
   		expect(@speechattempt).to be_instance_of SpeechAttempt
   	end
+
+  	#testing for valid data entries of speech attempt
+  	it "is a valid word" do
+  		@speechattempt = SpeechAttempt.create(
+  			speech_name: 'I am the best')	
+  	expect(@speechattempt).to be_valid
+  			
+  end
+
 end

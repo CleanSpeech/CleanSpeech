@@ -46,9 +46,7 @@ mreekers: Steps I have added for models rspec branch:
 (8) Testing Users_word model for new user words (**done**)
 (9) Testing Users_words_speech_attempt model for new users words speech attempts (**done**)
 
-
-
-
+(10) testing for valid data entries with the attributes of the models 
 
 
 
