@@ -54,7 +54,7 @@ $(function () {
 					console.log("Fillers[x]: " + fillers[x]);
 					str += (fillers[x] + ": " + fillerWordCounts[x] + "<br>");
 				}
-				console.log("str : " + str);
+				//console.log("str : " + str);
 
 				console.log("stopClicked: " + stopClicked);
 				// RESET THING THAT DOESN'T WORK AGAIN
