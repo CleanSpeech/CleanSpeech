@@ -17,6 +17,20 @@ RSpec.describe User, :type => :model do
   			
   	end
 
+    #testing User email validations 
+    it "should require an email" do 
+      user = User.create(:email => nil)
+      user.valid? 
+      expect(user.errors[:email]).not_to include(nil)
+    end
+
+    #testing User password validation
+    it "should require a password" do
+      user = User.create(:password_digest => nil)
+      user.valid?
+      expect(user.errors[:password_digest]).not_to include(nil)
+    end
+
  end
 
 
