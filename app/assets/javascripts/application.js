@@ -25,15 +25,19 @@ $(function () {
 	//all the words are going to go 
 	//into this array individually
 	var transArray = [""];
-
+	var stopClicked = false;
 	//grabs our button that starts listening
 	$("#testButton").click(function (){
+		recognition.continuous = true;
 		//starts the speech timer
 		timer();
 		//defines the recognition function --
 		//not sure if this needs to be 
 		//inside the onclick. Ask.
 		recognition.onresult = function(event) { 
+			recognition.continuous = true;
+
+			
 			// "event.results[0][0].transcript" is our transcript of all the words
 			var transcript = event.results[0][0].transcript;
 			
@@ -51,26 +55,47 @@ $(function () {
 					str += (fillers[x] + ": " + fillerWordCounts[x] + "<br>");
 				}
 				console.log("str : " + str);
+
+				console.log("stopClicked: " + stopClicked);
+				// if (!stopClicked){
+				// 		console.log("stopping");
+				// 		recognition.stop().then(function (thing){
+				// 			recognition.start();
+				// 		});
+				// 		console.log("stopped");
+						
+				// 		console.log("starting again");
+				// };
 				return str;
 			}
 
-
-			
 			//puts the transcript on the page
 			$("#textHere").html(transcript);
 			var fillerWordCounts = pickFillers(wordArray, fillers);
 			$("#count").html(showResults());
-			console.log("Inside: " + transArray);
+			//console.log("Inside: " + transArray);
 
 		}
-		//stops the recognition 
-		$("#stopButton").click(function(){
-				recognition.stop();
-			});
-
-		//calls listener function
 		recognition.start();
+		console.log("starting!!")
+		//calls listener function
+		
 
+	}); //end onclick start
+
+	// recognition.onaudioend = function (event){
+	// 	console.log("stopClicked: " + stopClicked);
+	// 	if (!stopClicked){
+	// 			recognition.start();
+	// 			console.log("starting again");
+	// 	}
+	// };
+
+		//stops the recognition 
+	$("#stopButton").click(function(){
+		stopClicked = true;
+		console.log("stopClicked in stop button: " + stopClicked);
+		recognition.stop();
 	});
 
 	//grabs the form where users enter words
@@ -81,7 +106,6 @@ $(function () {
 		event.preventDefault();
 		var content = $("#newFiller").val();
 		fillers.push(content);
-		console.log(fillers);
 		$("#displayFillers").append(content + "<br>");
 	});
 		
@@ -92,12 +116,12 @@ $(function () {
 	var fillers = [];
 	//var fillers = ["like", "so", "really"];
 	var pickFillers = function(transcript, fillers){
-		console.log("transcript: " + transcript);
+		//console.log("transcript: " + transcript);
 		// initializes an array that's the 
 		// length of the filler words array
 		var counts = new Array(fillers.length);
-		console.log("counts.length : " + counts.length);
-		console.log ("Transcript.length : " + transcript.length);
+		//console.log("counts.length : " + counts.length);
+		//console.log ("Transcript.length : " + transcript.length);
 		//cycles through filler words
 		for (var k = 0; k < fillers.length; k++ ){
 			var filler = fillers[k];
@@ -110,47 +134,68 @@ $(function () {
 				}
 			} 
 		}
-		console.log("Counts: ", counts);
+		//console.log("Counts: ", counts);
 		return counts;
-	}
+	};
 	
-function timer(){
-	var s = 1;
-	var m = 0;
-	var myVar = setInterval(function(){myTimer()},1000);
-	$("#timer").html("00:00");
-	function myTimer() {
-	  if (s < 60){
-	    if (s < 10){
-	      $("#timer").html(m + ":0" + s);
-	      s+=1;
-	    } else {
-	      $("#timer").html(m + ":" + s);
-	      s+=1;
-	    }
-	  } else {
-	      s = 1;
-	      m += 1;
-	      $("#timer").html(m + ":0" + s);
-	  }
-	}
-	$("#stopButton").click(function(){
-				clearInterval(myVar);
-			});
-}
+	function timer(){
+		var s = -1;
+		var m = 0;
+		var timeCount = 0;
+		var myVar = setInterval(function(){myTimer()},1000);
+		
+		$("#timer").html("00:00");
+		function myTimer() {
+			s+=1;
+			timeCount +=1;
+			//hacky a.f. way to get the 
+			//recognition session to refresh
+			if (timeCount == 55){
+				recognition.stop();
+			};
+			if (timeCount == 57){
+				recognition.start();
+				timeCount = 0;
+			};
+		  if (s < 60){
+		    if (s < 10){
+		      $("#timer").html(m + ":0" + s);
+		   //   s+=1;
+		    } else {
+		      $("#timer").html(m + ":" + s);
+		     // s+=1;
+		    }
+		  } else {
+		      s = 0;
+		      m += 1;
+		      $("#timer").html(m + ":0" + s);
+		  }
+		};
+
+		$("#stopButton").click(function(){
+			clearInterval(myVar);
+		});
+	}; // end
 
 
 // To Do:
 
+// -- Figure out data structures for collecting all words
+//    vs filler words
 // -- chain recognition starts until the user presses stop
 // -- FOR ANYONE READING MY COMMENTS, I AM SO SORRY. 
-// IT'S SO THAT PEOPLE STOP SAYING THESE WORDS.
+// 		IT'S SO THAT PEOPLE STOP SAYING THESE WORDS.
 // -- need to fix : fuck, fucking, fucker, motherfucker, whore, shit, 
-// asshole, cunt, asswipe, bitches, blow job,
-// bullshit, bumblefuck, cockhead, cocksucker, cum, 
-// cumslut, slut, dickface, dicksucker, dipshit, dumbfuck (but not dumbshit??)
-// fag, fagbag, fagfucker, faggot, motherfucking, nigger, nigga, niggers,
-	
+// 		asshole, cunt c***, asswipe, bitches, blow job,
+// 		bullshit, bumblefuck, cockhead, cocksucker, cum, 
+// 		cumslut, slut s***, dickface, dicksucker, dipshit, dumbfuck (but not dumbshit??)
+// 		fag, fagbag, fagfucker, faggot, motherfucking, nigger, nigga, niggers,
+// -- add bigram iteration to find "you know" etc.
 
+// if stopbutton has been clicked on, then end. If not, 
+// restart when onend has been triggered. 
+
+//create default user for people not logged in on which
+//to attach collected words
 });
 
