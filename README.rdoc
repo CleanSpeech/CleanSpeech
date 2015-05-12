@@ -1,1 +1,44 @@
 
+
+mreekers: Steps to install Factory_Girl
+
+(1) gem "factory_girl_rails", "~> 4.0"
+(2) gem "ffaker" (not required but useful)
+(3) go to config/application.rb under Class Application and put:
+config.generators do |g|
+      g.test_framework :rspec,
+        fixtures: true,
+        view_specs: false,
+        helper_specs: false,
+        routing_specs: false,
+        controller_specs: true,
+        request_specs: false
+      g.fixture_replacement :factory_girl, dir: "spec/factories"
+    end
+ (4) create a factories file under spec with users.rb and input:
+
+ #ffaker gem to produce data 
+require 'ffaker'
+
+#factory girl to create a basic user in the factory 
+
+FactoryGirl.define do
+    # Define a basic devise user.
+    factory :user do |f|
+    	#internet is the proper call to produce internet information like email names
+    	#and passwords 
+        email { FFaker::Internet.email }
+        password_digest { FFaker::Internet.password }
+    end
+end
+
+
+
+
+
+
+
+
+
+
+
