@@ -9,33 +9,43 @@
 	background: #FFFFFF;
 }
 
+.clean-out {
+	text-align: left;
 
+}
+
+.icon-text {
+	padding-top: 5px;
+}
 
 .body-gray {
+	
 	background: #E6E6E5;
 	font-family: 'Questrial', sans-serif; 
 }
 
-#mic-start-image {
-	padding-left: 45px;
-	padding-righ: 20px;
-}
 
-#mic-start-image:hover {
-	img: url("/assets/hover_mic.png");
-}
 
 .index-box {
 	 background: #40A85E;
 	 color: #FFFFFF;
 	 weight: none;
-	 padding-bottom: 25px;
-
+	 padding: 25px 25px;
+	 text-align: left;
 }
 
+.trymic {
+	padding-left: 100px;
+}	 
+
+
 .icons-box {
+	
  	color: #F9A027;
-	padding-top: 25px;
+	padding: 50px 100px;
 	background: #FFFFFF;
+	font-size: 18px;
+	
+	text-align: center;
 
 }
