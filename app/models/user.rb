@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
 	has_many :users_words
 	has_many :speech_attempts
 
+  attr_accessor :email, :password_digest
+
 	# attr_accessible :email, :password_digest
 
 	validates :email, presence: true, uniqueness: true
