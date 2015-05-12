@@ -10,10 +10,10 @@ class User < ActiveRecord::Base
 	has_many :users_words
 	has_many :speech_attempts
 
-	# attr_accessible :email, :password_digest
+	# attr_reader :email, :password_digest
 
 	validates :email, presence: true, uniqueness: true
-	validates :password_digest, presence: true
+	# validates :password_digest, presence: true
 
   def self.from_omniauth(auth)
     if !where(email: auth.info.email).empty?
