@@ -34,6 +34,7 @@ $(function () {
 		//defines the recognition function --
 		//not sure if this needs to be 
 		//inside the onclick. Ask.
+		var wordArray = [];
 		recognition.onresult = function(event) { 
 			recognition.continuous = true;
 
@@ -41,9 +42,14 @@ $(function () {
 			// "event.results[0][0].transcript" is our transcript of all the words
 			var transcript = event.results[0][0].transcript;
 			
-			// This pushes the transcript into the trans array
-			// as indivudual words
-			var wordArray = transcript.split(" ");
+			// This pushes each of the transcripts into the temp array,
+			// and then adds each of the words into the wordArray
+			tempArray = transcript.split(" ");
+			for (i=0; i < tempArray.length; i++){
+				wordArray.push(tempArray[i]);
+			}
+			
+			console.log("WordArray: ", wordArray);
 			
 			// puts the words the user entered
 			// onto the page next to the number of 
@@ -175,10 +181,10 @@ $(function () {
 			timeCount +=1;
 			//hacky a.f. way to get the 
 			//recognition session to refresh
-			if (timeCount == 55){
+			if (timeCount == 5){
 				recognition.stop();
 			};
-			if (timeCount == 57){
+			if (timeCount == 7){
 				recognition.start();
 				timeCount = 0;
 			};
