@@ -5,27 +5,18 @@ RSpec.describe User, :type => :model do
   end
 
   #creating a new instance of user through factorygirl 
-  it "has a valid factory" do
+  it "has a valid login" do
 
     user = FactoryGirl.build(:user)
+    
+    expect(user).to be_instance_of User
 
-    expect (user).to be_valid
 
     # it { should_expect(@user).to be_valid }
 
     #call this in rails console using user = FactoryGirl.create(:user)
   end
 
-  	#testing for valid login attributes
-  	it "is a valid login" do
-  	
-  		user = User.create(
-  			email: 'email@email.com',
-  			password: 'password')
-  			
-  		expect(user).to be_valid
-  			
-  	end
   describe "validations" do
     #testing User email validations 
     it "should require an email" do 

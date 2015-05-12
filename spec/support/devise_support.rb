@@ -15,4 +15,6 @@ end
 RSpec.configure do |config|
     # Include the help for the request specs.
     config.include ValidUserRequestHelper, :type => :request
+
+    config.include Devise::TestHelpers, type: :controller
 end

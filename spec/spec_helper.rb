@@ -1,4 +1,5 @@
 require 'devise'
+require 'rspec/rails'
 
 RSpec.configure do |config|
 
