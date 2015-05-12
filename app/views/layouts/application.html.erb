@@ -20,6 +20,8 @@
 
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
+
+    
     <link href='http://fonts.googleapis.com/css?family=Questrial' rel='stylesheet' type='text/css'>
 </head>
 
@@ -27,7 +29,7 @@
 
 <body>
 <!-- Navigation for all pages -->
-<nav id="myNavbar" class="navbar navbar-default" role="navigation">
+    <nav id="myNavbar" class="navbar navbar-default" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="container">
             <div class="navbar-header">
@@ -37,16 +39,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/"><img src="/images/Clean_speechlogo.png">  </a>
+                <a class="navbar-brand" href="/"><img src="/images/Clean_speechlogo.png" class="img-responsive" style="height:30px;">  </a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav navbar-right">
                     <li><%= link_to 'Log in', new_user_session_path %></li>
                     <li><%= link_to 'Sign up', new_user_registration_path %></li>
                     <li><li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
                 </ul>
-                
+
                 <ul class="nav navbar-nav navbar-right">
                     
                 </ul>
