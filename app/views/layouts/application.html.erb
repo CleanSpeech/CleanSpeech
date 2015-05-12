@@ -8,42 +8,56 @@
   <title>CleanSpeech</title>
   
   <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  
+  <link href="navbar-fixed-top.css" rel="stylesheet">
 
-<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-  <link href='http://fonts.googleapis.com/css?family=Questrial' rel='stylesheet' type='text/css'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <link href='http://fonts.googleapis.com/css?family=Questrial' rel='stylesheet' type='text/css'>
 </head>
 
 
 
 <body>
 <!-- Navigation for all pages -->
-<nav class="navbar navbar-default navbar-static-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false" aria-controls"navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="/"><img src="/images/Clean_speechlogo.png"></a>
-    </div>
-    <div class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
+<nav id="myNavbar" class="navbar navbar-default" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/"><img src="/images/Clean_speechlogo.png">  </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><%= link_to 'Log in', new_user_session_path %></li>
+                    <li><%= link_to 'Sign up', new_user_registration_path %></li>
+                    <li><li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
+                </ul>
+                
+                <ul class="nav navbar-nav navbar-right">
+                    
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div>
+    </nav>
 
-        <!-- Jessica: I added links to user forms so that we can see how they work. I realize we may not want a sign out link - feel free to remove. Not sure what 'users' is supposed to link to. -Emily -->
-        
-        
-        <li class="active"><%= link_to "Log in", new_user_session_path %></li>
-        <li class="active"><%= link_to "Sign up", new_user_registration_path %></li>
-        <li class="active"><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+
+
+
+
 
 <%= yield %>
 

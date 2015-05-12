@@ -217,3 +217,7 @@ $(function () {
 //to attach collected words
 });
 
+
+
+
+
