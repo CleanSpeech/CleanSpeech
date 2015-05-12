@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 class User < ActiveRecord::Base
 	has_many :words, :through => :users_words
 	has_many :users_words
@@ -7,7 +5,7 @@ class User < ActiveRecord::Base
 
 	# attr_accessible :email, :password_digest
 
-	validates :email, presence: true
+	validates :email, presence: true, uniqueness: true
 	validates :password_digest, presence: true
 
 end
