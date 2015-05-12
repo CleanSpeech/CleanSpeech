@@ -1,12 +1,12 @@
 class HomeController < ApplicationController
 # controller for home page.
  
- def index
+	def index
 
- end
+	end
 
- def show
- 	render :track
- end
+	def show
+	 	render :track
+	end
 
 end

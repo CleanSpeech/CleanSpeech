@@ -7,10 +7,11 @@
 			<h3 class="words-track">
 				Words to track
 			</h3>
-				<form action="">
+				<form id= "fillerWordInput" action="">
 				<!-- Insert search icon here -->
-  					<input type="text" name="word"><br>
+  					<input type="text" id="newFiller" name="word"><br>
   					<input type="submit" value="Submit">
+
 				</form>
 
 				<p>Suggested Words</p>
@@ -20,10 +21,10 @@
 					<li>Um</li>
 				</ul>
 				<p>My Words</p>
-				<ul>
-				<!-- Method here for when user enters words it gets added to my words -->
-					<li>Like</li>
-				</ul>
+
+				<!-- This is where the words you've added go -->
+				<div id="displayFillers"> </div>
+
 		</div>
 	</div>
 
@@ -43,18 +44,19 @@
 				Listening...
 			</h3>
 			<img id="mic-end-button" src="">
-			<h3 class="end-listening">
+			<h3 class="stopButton">
 				Click mic to stop.
 			</h3>
-
+			
 			<!-- Timer will go here -->
+			<div id="timer"> </div>
 
 		</div>
 	</div>
 
 	<div class="container">
 		<div class="row">
-			<h3 class="track-font">Words Results</h3>	
+			<h3 class="track-font">Words Results</h3>	<div id="textHere"> </div>
 
 			<!-- This button will lead the user either to login or profile -->
 			<button id="speech-pattern">Speech Pattern</button>

@@ -27,7 +27,7 @@ $(function () {
 	var transArray = [""];
 	var stopClicked = false;
 	//grabs our button that starts listening
-	$("#testButton").click(function (){
+	$("#mic-start-button").click(function (){
 		recognition.continuous = true;
 		//starts the speech timer
 		timer();
@@ -106,10 +106,16 @@ $(function () {
 	$addWordForm.on("submit", function (event) {
 		//so that the page doesn't reload onclick
 		event.preventDefault();
-		var content = $("#newFiller").val();
-		fillers.push(content);
-		console.log(fillers);
-		$("#displayFillers").append(content + "<br>");
+		var word = $("#newFiller").val();
+		fillers.push(word);
+		$.post("/words.json", {
+			word: {
+				word: word
+			}
+		}).done(function (createdWord){
+			console.log(fillers);
+		$("#displayFillers").append(createdWord.word + "<br>");
+		})
 	});
 		
 
