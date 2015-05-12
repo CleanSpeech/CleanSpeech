@@ -1,5 +1,4 @@
 
-
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -13,7 +12,7 @@ class User < ActiveRecord::Base
 
 	# attr_accessible :email, :password_digest
 
-	validates :email, presence: true
+	validates :email, presence: true, uniqueness: true
 	validates :password_digest, presence: true
 
   def self.from_omniauth(auth)
