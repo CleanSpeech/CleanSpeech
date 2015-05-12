@@ -2,3 +2,40 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+
+
+#myNavbar {
+	background: #FFFFFF;
+}
+
+
+
+.body-gray {
+	background: #E6E6E5;
+	font-family: 'Questrial', sans-serif; 
+}
+
+#mic-start-image {
+	padding-left: 45px;
+	padding-righ: 20px;
+}
+
+#mic-start-image:hover {
+	img: url("/assets/hover_mic.png");
+}
+
+.index-box {
+	 background: #40A85E;
+	 color: #FFFFFF;
+	 weight: none;
+	 padding-bottom: 25px;
+
+}
+
+.icons-box {
+ 	color: #F9A027;
+	padding-top: 25px;
+	background: #FFFFFF;
+
+}
