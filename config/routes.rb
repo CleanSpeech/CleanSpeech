@@ -7,4 +7,5 @@ Rails.application.routes.draw do
 	  resources :users
 	  resources :home
 	  resources :words
+	  resources :speech_attempts
 end

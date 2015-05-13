@@ -139,20 +139,24 @@ $(function () {
 			$("#displayFillers").append(createdWord.word + "<br>");
 		})
 	});
+
+
 		
 // this function is going to find our filler 
 // words in the array of total words
 // and count them	
 	var newTimer;
-	
+	var seconds;
 	function timer(){
 		var s = -1;
 		var m = 0;
 		var timeCount = 0;
+		seconds = 0;
 		newTimer = setInterval(function(){myTimer()},1000);
 		
 		$("#timer").html("00:00");
 		function myTimer() {
+			seconds += 1;
 			s+=1;
 			timeCount +=1;
 			//hacky a.f. way to get the 
@@ -202,6 +206,14 @@ $(function () {
 		
 		//console.log("stopClicked in stop button: " + stopClicked);
 		clearInterval(newTimer);
+
+		//adds speech attempt to database
+		$.post("/speech_attempts.json",{
+			speech_attempt: {
+					speech_attempt: seconds
+			}
+		});
+
 		recognition.stop();
 		
 			
@@ -211,6 +223,7 @@ $(function () {
 		$("#textHere").html(wordArray);
 		$("#count").html(showResults());
 		},3000)
+		
 		
 		
 		//stopClicked = true;
@@ -223,14 +236,6 @@ $(function () {
 //    vs filler words
 // -- create default user for people not logged in on which
 //		to attach collected words
-// -- FOR ANYONE READING MY COMMENTS, I AM SO SORRY. 
-// 		IT'S SO THAT PEOPLE STOP SAYING THESE WORDS.
-// -- need to fix : fuck, fucking, fucker, motherfucker, whore, shit, 
-// 		asshole, cunt c***, asswipe, bitches, blow job,
-// 		bullshit, bumblefuck, cockhead, cocksucker, cum, 
-// 		cumslut, slut s***, dickface, dicksucker, dipshit, dumbfuck (but not dumbshit??)
-// 		fag, fagbag, fagfucker, faggot, motherfucking, nigger, nigga, niggers,
-
 
 
 //
