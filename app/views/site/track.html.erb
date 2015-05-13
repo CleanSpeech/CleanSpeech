@@ -7,33 +7,33 @@
 			<h3 class="words-track">
 				Words to track
 			</h3>
-				<form id= "fillerWordInput" action="">
-				<!-- Insert search icon here -->
-  					<input type="text" id="newFiller" name="word"><br>
-  					<input type="submit" value="Submit">
+			<form id= "fillerWordInput" action="">
+			<!-- Insert search icon here -->
+					<input type="text" id="newFiller" name="word"><br>
+					<input type="submit" value="Submit">
 
-				</form>
+			</form>
 
-				<p>Suggested Words</p>
-				<ul>
-					<li>Like</li>
-					<li>So</li>
-					<li>Um</li>
-				</ul>
-				<p>My Words</p>
+			<p>Suggested Words</p>
+			<ul>
+				<li>Like</li>
+				<li>So</li>
+				<li>Um</li>
+			</ul>
+			<p>My Words</p>
 
-				<!-- This is where the words you've added go -->
-				<div id= "displayFillers"> 
-					<% @words.each do |w| %>  
-						<div class="fillerItem">
-							<%= w.word %> 
-						</div>	
-							<button class="delete-user-word" data-word-id="<%= w.id %>"> X </button>
+			<!-- This is where the words you've added go -->
+			<div id= "displayFillers"> 
+				<% @words.each do |w| %>  
+					<div class="fillerItem">
+						<%= w.word %> 
+					
+						<button class="delete-user-word" data-word-id="<%= w.id %>"> X </button>
+					</div>	
+					
 
-						
-
-					<% end %>
-				</div>
+				<% end %>
+			</div>
 
 		</div>
 	</div>

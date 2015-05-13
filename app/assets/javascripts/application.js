@@ -136,7 +136,7 @@ $(function () {
 			}
 		}).done(function (createdWord){
 			console.log(fillers);
-			$("#displayFillers").append(createdWord.word + "<br>");
+			$("#displayFillers").append(createdWord.word + "<button class=\"delete-user-word\" data-word-id=\"<%= w.id %>\"> X </button>" +"<br>");
 		})
 	});
 
@@ -144,12 +144,17 @@ $(function () {
 
 $(".delete-user-word").click(function(){
 	var wordId = $(this).data("word-id");
-	console.log(wordId);
+	console.log("word ID" + wordId);
+	var $word = this.closest(".fillerItem");
+	console.log("$word  :::" , $word);
 	$.ajax({
 		url: "/words/"+ wordId + ".json",
 		type: "PATCH"
 	}).done(function(){
-		this.
+		
+		//console.log()
+		$word.remove();
+		console.log(this)
 		console.log("DELETED!!!");
 	});
 });
