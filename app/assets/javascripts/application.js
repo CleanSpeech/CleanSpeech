@@ -245,4 +245,28 @@ $(function () {
 
 
 
+$('#btnClick').on('click',function(){
+    
+
+    if($('#1').css('display')!='none'){
+
+    $('#2').html($('#static').html()).show().siblings('div').hide();
+        
+
+    }else if($('#2').css('display')!='none'){
+/*    
+Condition to check if DIV 2 is visible
+*/
+        $('#1').show().siblings('div').hide();
+/*    
+If it is, it will show DIV 1 and right after that will search for it siblings and hide them with .siblings('div').hide();
+*/
+    }
+});
+
+
+
+
+
+
 

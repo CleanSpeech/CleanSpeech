@@ -1,66 +1,70 @@
-		<!--- Here is the page to track words/listen to speech -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
 
-
-
-	<div class="container">
-		<div class="row">
-			<h3 class="words-track">
-				Words to track
-			</h3>
-				<form id= "fillerWordInput" action="">
-				<!-- Insert search icon here -->
-  					<input type="text" id="newFiller" name="word"><br>
-  					<input type="submit" value="Submit">
-
-				</form>
-
-				<p>Suggested Words</p>
-				<ul>
-					<li>Like</li>
-					<li>So</li>
-					<li>Um</li>
-				</ul>
-				<p>My Words</p>
-
-				<!-- This is where the words you've added go -->
-				<div id="displayFillers"> </div>
-
-		</div>
-	</div>
-
-	<!-- Class "track-font" will be a style the same -->
-
-	<div class="container">
-		<div class="row">
-			<h3 class="track-font">
-				Click the mic to start the listening process...
-			</h3>
-
-			<img id="mic-start-button" src="">
-
-			<!-- AJAX to make the second screen of the mic -->
-			<!-- This is the second listening screen here -->
-			<h3 class="track-font">
-				Listening...
-			</h3>
-			<img id="mic-end-button" src="">
-			<h3 class="stopButton">
-				Click mic to stop.
-			</h3>
+</head>
+<body>
+	
 			
+
+		
+		<div class="container track-box">
+			<div class="row">
+				<div class="col-xs-12 col-md-4">
+					<div class="field">	
+					<form action="">
+					<h3 class="track-font">
+						Words to track
+					</h3>
+					<!-- Insert search icon here -->
+  						<input type="text" name="word">
+  						<input type="submit" value="Add">
+					</form>
+					</div>
+				</div>
+		
+	
+				<div class="col-xs-12 col-md-4">
+					
+						<h3 class="track-font">My Words:</h3>
+				
+				<!-- Method here for when user enters words it gets added to my words -->
+						<p class="myWords">Like</p>
+					
+				
+				</div>
+
+<<<<<<< HEAD:app/views/home/track.html.erb
+				<div class="col-xs-12 col-md-4">	
+					<img id='imgRotate' src='/assets/start_mic.png' data-swap='/assets/end_mic.png' />
+				
+				
+				</div>
+					<!-- AJAX to make the second screen of the mic -->
+					<!-- This is the second listening screen here -->
+					
+
 			<!-- Timer will go here -->
-			<div id="timer"> </div>
+				</div>
+			</div>
 
 		</div>
-	</div>
+	</div>	
 
-	<div class="container">
-		<div class="row">
-			<h3 class="track-font">Words Results</h3>	<div id="textHere"> </div>
+<script type="text/javascript">
+	
+	$("#imgRotate").click(function() { 
+       var _this = $(this);
+       var current = _this.attr("src");
+       var swap = _this.attr("data-swap");     
+     _this.attr('src', swap).attr("data-swap",current);   
+});  
+</script>
 
-			<!-- This button will lead the user either to login or profile -->
-			<button id="speech-pattern">Speech Pattern</button>
 
-			<!-- Graph of the results will be shown here -->
-		</div>
-	</div>
+</body>
+</html>
+
+

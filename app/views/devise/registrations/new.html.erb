@@ -1,24 +1,29 @@
-<h2>Sign up</h2>
+<div class="track-font">
+<h1>Sign up</h1>
+</div>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    
+   <%= f.email_field :email, autofocus: true %><br />
+    <%= f.label :email %>
   </div>
 
   <div class="field">
+  <%= f.password_field :password, autocomplete: "off" %><br />
     <%= f.label :password %>
     <% if @validatable %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <% end %>
+    
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    
+    <%= f.password_field :password_confirmation, autocomplete: "off" %><br />
+    <%= f.label :password_confirmation %>
   </div>
 
   <div class="actions">
@@ -28,5 +33,4 @@
 
 <%= render "devise/shared/links" %>
 
-<hr>
-<a href=<%= link_to"", user_omniauth_authorize_path(:facebook) %>><img src="/assets/facebook_login.png"></a>
+
