@@ -18,6 +18,8 @@
 
 
 $(function () {
+	var transcript;
+	var wordArray = [];
 
 	//This section is what runs our speech recognition tool
 	var recognition = new webkitSpeechRecognition();
@@ -27,19 +29,20 @@ $(function () {
 	var stopClicked = false;
 	//grabs our button that starts listening
 	$("#mic-start-button").click(function (){
+		wordArray = [];
 		recognition.continuous = true;
 		//starts the speech timer
 		timer();
 		//defines the recognition function --
 		//not sure if this needs to be 
 		//inside the onclick. Ask.
-		var wordArray = [];
+		
 		recognition.onresult = function(event) { 
 			recognition.continuous = true;
 
 			
 			// "event.results[0][0].transcript" is our transcript of all the words
-			var transcript = event.results[0][0].transcript;
+			transcript = event.results[0][0].transcript;
 			
 			// This pushes each of the transcripts into the temp array,
 			// and then adds each of the words into the wordArray
@@ -53,24 +56,11 @@ $(function () {
 			// puts the words the user entered
 			// onto the page next to the number of 
 			// times the user used them
-			var showResults = function(){
-				str = "";
-				if (fillers.indexOf("*swears") == -1){
-					fillers.push("*swears");
-				};
-				for (var x = 0; x < fillers.length; x++){
-					console.log("Fillers[x]: " + fillers[x]);
-					str += (fillers[x] + ": " + fillerWordCounts[x] + "<br>");
-				}
-				console.log("fillers in show results: ", fillers);
-				console.log("stopClicked: " + stopClicked);
-				return str;
-			};
 
-			//puts the transcript on the page
-			$("#textHere").html(transcript);
-			var fillerWordCounts = pickFillers(wordArray, fillers);
-			$("#count").html(showResults());
+			//SHOW RESULTS --taken from here and put in stopclick
+			
+			//puts the transcript on the page REMOVED FROM HERE
+			
 		}
 		recognition.start();
 		console.log("starting!!")
@@ -80,11 +70,8 @@ $(function () {
 		
 	}); //end onclick start
 
-var fillers = [];
-recognition.onresult = function(event){
-	console.log("OUTSIDE ONRESULT!");
+	var fillers = [];
 
-}
 	var pickFillers = function(transcript, fillers){
 		//console.log("transcript: " + transcript);
 		// initializes an array that's the 
@@ -93,15 +80,17 @@ recognition.onresult = function(event){
 		counts.forEach(function(el,id,arr){
 			arr[id] = 0;
 		});
-		if (fillers.indexOf("*swears") == -1 && counts.length < fillers.length + 1 ){
+		if (fillers.indexOf("*swears") === -1 && counts.length < fillers.length + 1 ){
 		counts.push(0);
 		}
+
 		// this is to add one at the end to count swears
 		
 		//cycles through filler words
 		for (var k = 0; k < fillers.length; k++ ){
 			var filler = fillers[k];
-			counts[k] = counts[k] || 0;
+			counts[k] = 0;
+			//counts[k] = counts[k] || 0;
 			//if there's a space in the filler word...
 			//which means that there are two words in the filler
 			if (filler.indexOf(" ") != -1){
@@ -111,16 +100,17 @@ recognition.onresult = function(event){
 				for (var i = 0; i < transcript.length-1; i++){
 					// second comparison
 					var j = i + 1;
-					if (d == transcript[i] && w == transcript[j]){
+					if (d === transcript[i] && w === transcript[j]){
 						counts[k] += 1;
 					}
 				}
 			} else {
 				//cycles through whole transcript
+				counts[counts.length-1] = 0;
 				for (var q = 0; q < transcript.length; q++){
-					if (transcript[q] == filler){
+					if (transcript[q] === filler){
 						counts[k] += 1;
-					} else if (transcript[q][1] == "*"){ //THIS NEEDS TO BE MADE CONDITIONAL
+					} else if (transcript[q][1] === "*"){ //THIS NEEDS TO BE MADE CONDITIONAL
 						counts[counts.length-1] += 1;
 					}
 				} 
@@ -128,7 +118,7 @@ recognition.onresult = function(event){
 		}
 		console.log("fillers:", fillers);
 		console.log("Counts: ", counts);
-		counts[counts.length-1] = counts[counts.length-1]/2;
+		//counts[counts.length-1] = counts[counts.length-1];//fillers.length;
 		return counts;
 	};
 
@@ -153,13 +143,13 @@ recognition.onresult = function(event){
 // this function is going to find our filler 
 // words in the array of total words
 // and count them	
-	
+	var newTimer;
 	
 	function timer(){
 		var s = -1;
 		var m = 0;
 		var timeCount = 0;
-		var newTimer = setInterval(function(){myTimer()},1000);
+		newTimer = setInterval(function(){myTimer()},1000);
 		
 		$("#timer").html("00:00");
 		function myTimer() {
@@ -167,10 +157,10 @@ recognition.onresult = function(event){
 			timeCount +=1;
 			//hacky a.f. way to get the 
 			//recognition session to refresh
-			if (timeCount == 5){
+			if (timeCount === 5){
 				recognition.stop();
 			};
-			if (timeCount == 7){
+			if (timeCount === 7){
 				recognition.start();
 				timeCount = 0;
 			};
@@ -189,13 +179,42 @@ recognition.onresult = function(event){
 		  }
 		};
 
-	$("#stopButton").click(function(){
-		stopClicked = true;
-		console.log("stopClicked in stop button: " + stopClicked);
-		recognition.stop();
-		clearInterval(newTimer);
-		});
+	
 	}; // end timer
+	var fillerWordsCounts;
+
+	var showResults = function(){
+			str = "";
+			if (fillers.indexOf("*swears") === -1){
+				fillers.push("*swears");
+				console.log("adding swears");
+			};
+			for (var x = 0; x < fillers.length; x++){
+				console.log("Fillers[x]: " + fillers[x]);
+				str += (fillers[x] + ": " + fillerWordCounts[x] + "<br>");
+			}
+			console.log("fillers in show results: ", fillers);
+			return str;
+	};
+	
+
+	$("#stopButton").click(function(){
+		
+		//console.log("stopClicked in stop button: " + stopClicked);
+		clearInterval(newTimer);
+		recognition.stop();
+		
+			
+		fillerWordCounts = pickFillers(wordArray, fillers);
+		
+	myVar = setTimeout(function(){ 
+		$("#textHere").html(wordArray);
+		$("#count").html(showResults());
+		},3000)
+		
+		
+		//stopClicked = true;
+	});
 
 
 // To Do:
