@@ -9,20 +9,14 @@
 	font-family: 'Questrial', sans-serif; 
 }
 
-h1 {
+h1, .field, .links, .actions {
 	text-align: center;
 }
+
+
 
 .field {
-	text-align: center;
-}
-
-.links {
-	text-align: center;
-}
-
-.actions {
-	text-align: center;
+	color: #F9A027;
 }
 
 #myNavbar {
@@ -57,4 +51,5 @@ h1 {
 
 .track-font {
 	color: #61BD6D;
+	text-align: center;
 }

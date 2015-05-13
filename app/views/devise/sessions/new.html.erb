@@ -1,14 +1,18 @@
+<div class="track-font">
 <h1>Log in</h1>
+</div>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    
+    <%= f.email_field :email, autofocus: true %><br />
+    <%= f.label :email %>
   </div>
 
   <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+   
+    <%= f.password_field :password, autocomplete: "off" %><br />
+    <%= f.label :password %>
   </div>
 
   <% if devise_mapping.rememberable? -%>
@@ -26,6 +30,5 @@
 
 
 <%= render "devise/shared/links" %>
-<hr>
-<a href="<%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>"><button class="facebook"><img src="/assets/facebook_login.png"></button></a>
+
 
