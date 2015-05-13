@@ -1,9 +1,11 @@
 require 'devise'
 require 'rspec/rails'
+require 'capybara/rspec'
 
 RSpec.configure do |config|
 
   config.include Devise::TestHelpers, :type => :controller
+
 
   # Print the 10 slowest examples and example groups at the
   # end of the spec run, to help surface which specs are running
