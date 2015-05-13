@@ -234,7 +234,7 @@ $(".delete-user-word").click(function(){
 		//adds speech attempt to database
 		$.post("/speech_attempts.json",{
 			speech_attempt: {
-					speech_attempt: seconds
+					time: seconds
 			}
 		});
 

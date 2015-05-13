@@ -2,7 +2,7 @@ class SpeechAttemptsController < ApplicationController
 # controller for home page.
  
 	def create
-		@speech_attempt = Speech_Attempt.create(params.require(:time).permit(:time))
+		@speech_attempt = SpeechAttempt.create(params.require(:speech_attempt).permit(:time))
 
   		respond_to do |f|
   			f.html
