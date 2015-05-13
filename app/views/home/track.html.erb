@@ -4,48 +4,70 @@
 
 	<div class="container">
 		<div class="row">
-			<h3 class="words-track">
-				Words to track
-			</h3>
-				<form action="">
-				<!-- Insert search icon here -->
-  					<input type="text" name="word"><br>
-  					<input type="submit" value="Submit">
-				</form>
+			<div class="col-xs-12 col-md-4">
+					<h3 class="track-font">
+						Words to track
+					</h3>
+				</div>
+	</div>			
 
+		
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-md-4">
+					<form action="">
+					<!-- Insert search icon here -->
+  						<input type="text" name="word">
+  						<input type="submit" value="Add">
+				</form>
+				</div>
+			</div>
+		</div>	
+
+	<div class="container">
+		<div class=-"row">
+			<div class="col-xs-12 col-md-4">
 				<p>Suggested Words</p>
-				<ul>
+				
 					<li>Like</li>
 					<li>So</li>
 					<li>Um</li>
-				</ul>
-				<p>My Words</p>
-				<ul>
+			
+			</div>
+				
+				<div class="col-xs-12 col-md-4">
+					<p>My Words</p>
+				
 				<!-- Method here for when user enters words it gets added to my words -->
-					<li>Like</li>
-				</ul>
+						<li>Like</li>
+				
+				</div>
+	
+
+			</div>
 		</div>
-	</div>
+		
 
 	<!-- Class "track-font" will be a style the same -->
 
 	<div class="container">
 		<div class="row">
-			<h3 class="track-font">
-				Click the mic to start the listening process...
-			</h3>
+				<div class="col-xs-12 col-md-4">
+					<h3 class="track-font">
+						Click the mic to start the listening process...
+					</h3>
 
-			<img id="mic-start-button" src="">
-
-			<!-- AJAX to make the second screen of the mic -->
-			<!-- This is the second listening screen here -->
-			<h3 class="track-font">
-				Listening...
-			</h3>
-			<img id="mic-end-button" src="">
-			<h3 class="end-listening">
-				Click mic to stop.
-			</h3>
+					<img id="mic-start-button" src="/assets/start_mic.png">
+				</div>
+					<!-- AJAX to make the second screen of the mic -->
+					<!-- This is the second listening screen here -->
+					<h3 class="track-font">
+						Listening...
+					</h3>
+					<img id="mic-end-button" src="/assets/listening_mic.png">
+					<h3 class="end-listening">
+						Click mic to stop.
+					</h3>
 
 			<!-- Timer will go here -->
 

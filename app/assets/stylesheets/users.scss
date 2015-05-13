@@ -3,6 +3,12 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+.body-gray {
+	padding-top: 70px;
+	background: #E6E6E5;
+	font-family: 'Questrial', sans-serif; 
+}
+
 
 
 #myNavbar {
@@ -18,11 +24,6 @@
 	padding-top: 5px;
 }
 
-.body-gray {
-	
-	background: #E6E6E5;
-	font-family: 'Questrial', sans-serif; 
-}
 
 
 
@@ -31,12 +32,9 @@
 	 color: #FFFFFF;
 	 weight: none;
 	 padding: 25px 25px;
-	 text-align: left;
+	 text-align: center;
 }
 
-.trymic {
-	padding-left: 100px;
-}	 
 
 
 .icons-box {
@@ -45,7 +43,10 @@
 	padding: 50px 100px;
 	background: #FFFFFF;
 	font-size: 18px;
-	
 	text-align: center;
+}
 
+
+.track-font {
+	color: #61BD6D;
 }
