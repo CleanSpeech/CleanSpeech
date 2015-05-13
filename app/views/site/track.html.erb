@@ -23,7 +23,12 @@
 				<p>My Words</p>
 
 				<!-- This is where the words you've added go -->
-				<div id="displayFillers"> </div>
+				<div> <% @words.each do |w| %>  
+
+						<%= w.word %> 
+
+						<% end %>
+				</div>
 
 		</div>
 	</div>
