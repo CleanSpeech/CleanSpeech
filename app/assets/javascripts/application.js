@@ -141,6 +141,25 @@ $(function () {
 	});
 
 
+
+$(".delete-user-word").click(function(){
+	var wordId = $(this).data("word-id");
+	console.log(wordId);
+	$.ajax({
+		url: "/words/"+ wordId + ".json",
+		type: "PATCH"
+	}).done(function(){
+		this.
+		console.log("DELETED!!!");
+	});
+});
+
+
+ 
+//.done(function (done){
+// 			console.log("Deleted");
+// 			$("#displayFillers").append(createdWord.word + "<br>");
+// 		})
 		
 // this function is going to find our filler 
 // words in the array of total words
@@ -226,6 +245,10 @@ $(function () {
 		
 		
 		
+
+
+
+
 		//stopClicked = true;
 	});
 
@@ -238,10 +261,17 @@ $(function () {
 //		to attach collected words
 
 
-//
+// create button DONE
+// Write ajax delete method - client
+// write route to words#update - server
+// write words#update method - server
+// write response in words#update - server
+// check response in console.log in ajax delete callback -client
+// update DOM in ajax delete callback -client
 
 });
 
+// Update user  u.words.delete(Word.find(63))
 
 
 
