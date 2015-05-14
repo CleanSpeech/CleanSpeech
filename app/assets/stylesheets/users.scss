@@ -13,12 +13,23 @@ h1, .field, .links, .actions {
 	text-align: center;
 }
 
-.fillers {
-	flex-direction: row | row-reverse | column | column-reverse;
+
+.minChar {
+	font-size: 12px;
+	padding-right: 20px;
 }
 
-.field {
-	color: #F9A027;
+.email {
+	padding-right: 100px;
+}
+
+.password {
+	padding-right: 80px;
+}
+
+.password-email {
+	
+	padding-top: 15px;
 }
 
 #myNavbar {
