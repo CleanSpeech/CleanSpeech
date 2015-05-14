@@ -233,9 +233,12 @@ $(".delete-user-word").click(function(){
 		$.post("/speech_attempts.json",{
 			speech_attempt: {
 					time: seconds
+
 			}
 		});
 		myVar = setTimeout(function(){ 
+			/// $post
+		toObj(fillers, counts);
 		$("#textHere").html(wordArray);
 		$("#count").html(showResults());
 		},4000);
@@ -243,6 +246,13 @@ $(".delete-user-word").click(function(){
 	});
 		
 			
+var toObj = function(fillers, counts){
+  var obj = {}
+  for (var i = 0; i < fillers.length; i++){
+  obj[fillers[i]]= counts[i]
+  }
+return obj;
+}
 		
 		
 
