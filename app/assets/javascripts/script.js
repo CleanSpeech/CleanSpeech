@@ -126,7 +126,6 @@ $(function () {
 
 $(".delete-user-word").click(function(){
 	var wordId = $(this).data("word-id");
-	//var wordText = $(this).data("word");
 	console.log("word ID" + wordId);
 	var $word = this.closest(".fillerItem");
 	console.log("$word  :::" , $word);
@@ -134,8 +133,7 @@ $(".delete-user-word").click(function(){
 		url: "/words/"+ wordId + ".json",
 		type: "PATCH"
 	}).done(function(){
-		//var wordIndex = fillers.indexOf(wordText);
-    //fillers.splice(wordIndex, 1);
+		
 		//console.log()
 		$word.remove();
 		console.log(this)

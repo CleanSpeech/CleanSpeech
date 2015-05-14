@@ -17,7 +17,7 @@
 						Words to track
 					</h3>
 					<!-- Insert search icon here -->
-  						<input id = "newFiller" type="text" name="word">
+  						<input id ="newFiller" type="text" name="word">
   						<input type="submit" value="Add">
 					</form>
 					</div>
@@ -27,9 +27,18 @@
 				<div class="col-xs-12 col-md-4">
 					
 						<h3 class="track-font">My Words:</h3>
+					<div id= "displayFillers"> 
+						<% @words.each do |w| %>  
+						<div class="fillerItem">
+							<%= w.word %> 
+							<button class="delete-user-word" data-word-id="<%= w.id %>"> X </button>
+						
+						</div>	
+					<% end  %>
+					</div>
 				
 				<!-- Method here for when user enters words it gets added to my words -->
-						<div id = "displayFillers" class="myWords"></div>
+						<!-- <div id = "displayFillers" class="myWords"></div> -->
 					
 				
 				</div>
