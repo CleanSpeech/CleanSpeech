@@ -7,8 +7,6 @@
 </head>
 <body>
 	
-			
-
 		
 		<div class="container track-box">
 			<div class="row">
@@ -36,8 +34,6 @@
 				
 				</div>
 
-<<<<<<< HEAD
-<<<<<<< HEAD:app/views/home/track.html.erb
 				<div class="col-xs-12 col-md-4">	
 					<img id='imgRotate' src='/assets/start_mic.png' data-swap='/assets/end_mic.png' />
 				
@@ -49,39 +45,7 @@
 
 			<!-- Timer will go here -->
 				</div>
-=======
-	<div class="container">
-		<div class="row">
-			<h3 class="words-track">
-				Words to track
-			</h3>
-			<form id= "fillerWordInput" action="">
-			<!-- Insert search icon here -->
-					<input type="text" id="newFiller" name="word"><br>
-					<input type="submit" value="Submit">
 
-			</form>
-
-			<p>Suggested Words</p>
-			<ul>
-				<li>Like</li>
-				<li>So</li>
-				<li>Um</li>
-			</ul>
-			<p>My Words</p>
-
-			<!-- This is where the words you've added go -->
-			<div id= "displayFillers"> 
-				<% @words.each do |w| %>  
-					<div class="fillerItem">
-						<%= w.word %> 
-					
-						<button class="delete-user-word" data-word-id="<%= w.id %>"> X </button>
-					</div>	
-					
-
-				<% end %>
->>>>>>> f746f3ae19e310f9e44b11dde037b15e345e22ab
 			</div>
 
 		</div>
