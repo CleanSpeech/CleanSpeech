@@ -9,11 +9,15 @@ RSpec.describe UsersWord, :type => :model do
 
   	#testing for valid data entries of UsersWord 
   	it "is a valid users word" do
-  	
-  	@usersword = UsersWord.create()
-  			
-  	expect(@usersword).to be_valid
-  			
-  end
 
+      @user = FactoryGirl.build(:user)
+      @word = FactoryGirl.build(:word)
+
+      @user.words << @word
+  	
+  	# @usersword = UsersWord.create()
+  			
+  	# expect(@usersword).to be_valid
+  		
+    end
 end
