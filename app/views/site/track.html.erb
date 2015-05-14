@@ -8,63 +8,57 @@
 <body>
 	
 		
-		<div class="container track-box">
-			<div class="row">
-				<div class="col-xs-12 col-md-4">
-					<div class="field">	
-					<form id = "fillerWordInput" action="">
-					<h3 class="track-font">
-						Words to track
-					</h3>
-					<!-- Insert search icon here -->
-  						<input id ="newFiller" type="text" name="word">
-  						<input type="submit" value="Add">
-					</form>
-					</div>
+	<div class="container track-box">
+		<div class="row">
+			<div class="col-xs-12 col-md-4">
+				<div class="field">	
+				<form id = "fillerWordInput" action="">
+				<h3 class="track-font">
+					Words to track
+				</h3>
+				<!-- Insert search icon here -->
+						<input id ="newFiller" type="text" name="word">
+						<input type="submit" value="Add">
+				</form>
 				</div>
+			</div>
 		
 	
-				<div class="col-xs-12 col-md-4">
-					
-						<h3 class="track-font">My Words:</h3>
-					<div id= "displayFillers"> 
-						<% @words.each do |w| %>  
-							<div class="fillerItem">
-								<div class="actualWord"><%= w.word %></div>
-								<button class="delete-user-word" data-word-id="<%= w.id %>"> X </button>
-							
-							</div>	
-						<% end  %>
-					</div>
-				
-				<!-- Method here for when user enters words it gets added to my words -->
-						<!-- <div id = "displayFillers" class="myWords"></div> -->
-					
-				
+			<div class="col-xs-12 col-md-4">
+				<h3 class="track-font">My Words:</h3>
+				<div id= "displayFillers"> 
+					<% @words.each do |w| %>  
+						<div class="fillerItem">
+							<div class="actualWord"><%= w.word %></div>
+							<button class="delete-user-word" data-word-id="<%= w.id %>"> X </button>
+						</div>	
+					<% end  %>
 				</div>
+			</div>
 				
-				<div class="col-xs-12 col-md-4">	
-					<div class ="imgswap">
-
-						<img  id="imgClickAndChange"  src="/assets/start_mic.png" data-swap="/assets/end_mic.png"/>
-						<button class="mic-start-button" onclick="changeImage()"> START SPEAKING! </button>
-	<button class="stop-button" onclick="changeBack()"> Stop Speaking! </button>
-					</div>
-				
-				
-				</div>
+			<div class="col-xs-12 col-md-4">	
+				<div class ="imgswap">
+					<img  id="imgClickAndChange"  src="/assets/start_mic.png" data-swap="/assets/end_mic.png"/>
+					<button class="mic-start-button" onclick="changeImage()"> START SPEAKING! </button>
+					<button class="stop-button" onclick="changeBack()"> Stop Speaking! </button>
+				</div>	
+			</div>
 					<!-- AJAX to make the second screen of the mic -->
 					<!-- This is the second listening screen here -->
 					
 
-			Speech timer: <div id="timer"> </div>
-			Total Words: <div id="count"> </div>
-				</div>
+					Speech timer: <div id="timer"> </div>
+					Total Words: <div id="count"> </div>
+			<div id="graph">
+				<div class="col-xs-6">
+    				<h3>Total Words for this Speech Attempt</h3>
+    				<%= bar_chart @speech_attempts.group(:time).count %>
 
+  				</div>
 			</div>
-
 		</div>
-	</div>	
+	</div>
+				
 
 <script language="javascript">
 	function changeBack(){
