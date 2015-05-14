@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 20150511180939) do
     t.integer  "count"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
-    t.integer  "users_word_id"
+    t.integer  "word_id"
     t.integer  "speech_attempt_id"
   end
 

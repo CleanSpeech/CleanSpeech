@@ -5,7 +5,7 @@ class CreateUsersWordsSpeechAttempts < ActiveRecord::Migration
 
       t.timestamps null: false
 
-      t.references :users_word
+      t.references :word
       t.references :speech_attempt
     end
   end
