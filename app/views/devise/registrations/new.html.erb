@@ -6,28 +6,48 @@
   <%= devise_error_messages! %>
 
   <div class="field">
+    <div class="password-email">
+      <div class="email">
+      <%= f.label :email %> <br />
+      </div>
+    </div>
+   <%= f.email_field :email, autofocus: true %>
     
-   <%= f.email_field :email, autofocus: true %><br />
-    <%= f.label :email %>
   </div>
 
   <div class="field">
-  <%= f.password_field :password, autocomplete: "off" %><br />
+    <div class="password-email">
+      <div class="password">
     <%= f.label :password %>
-    <% if @validatable %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %>
+      </div>
+    </div>
+
+    <div class="minChar">
+       <% if @validatable %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %>
+    </div>
+   
+  <%= f.password_field :password, autocomplete: "off" %>
+    
+   
     
   </div>
 
   <div class="field">
+    <div class="password-email">
+      <div class="password-confirm"
+    <%= f.label :password_confirmation %><br />
+      </div>
+    </div>
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
     
-    <%= f.password_field :password_confirmation, autocomplete: "off" %><br />
-    <%= f.label :password_confirmation %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <div class="password-email">
+      <%= f.submit "Sign up" %>
+    </div>
   </div>
 <% end %>
 
