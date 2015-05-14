@@ -176,10 +176,10 @@ $(".delete-user-word").click(function(){
 			timeCount +=1;
 			//hacky a.f. way to get the 
 			//recognition session to refresh
-			if (timeCount === 5){
+			if (timeCount === 55){
 				recognition.stop();
 			};
-			if (timeCount === 7){
+			if (timeCount === 57){
 				recognition.start();
 				timeCount = 0;
 			};
@@ -220,8 +220,12 @@ $(".delete-user-word").click(function(){
 
 	$(".stop-button").click(function(){
 		console.log("CLICKED!! Now. Clicked.");
-		fillerWordCounts = pickFillers(wordArray, fillers);
 		recognition.stop();
+
+		setTimeout(function(){
+			fillerWordCounts = pickFillers(wordArray, fillers);
+		}, 2000);
+		
 		//console.log("stopClicked in stop button: " + stopClicked);
 		clearInterval(newTimer);
 
@@ -234,7 +238,7 @@ $(".delete-user-word").click(function(){
 		myVar = setTimeout(function(){ 
 		$("#textHere").html(wordArray);
 		$("#count").html(showResults());
-		},3000);
+		},4000);
 
 	});
 		
