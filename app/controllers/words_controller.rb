@@ -1,6 +1,13 @@
 class WordsController < ApplicationController
 # controller for words
  
+    def new
+
+        @word = Word.new
+
+    end
+
+
 	def create
 		@word = Word.create(params.require(:word).permit(:word))
 

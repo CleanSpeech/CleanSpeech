@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
 	# attr_accessible :email, :password_digest
 
 	validates :email, presence: true, uniqueness: true
-	# validates :password, presence: true
+	validates :password, presence: true
 
   def self.from_omniauth(auth)
     if !where(email: auth.info.email).empty?
@@ -27,8 +27,8 @@ class User < ActiveRecord::Base
       where(uid: auth.uid).first_or_create do |user|
         user.email = auth.info.email
         user.password = Devise.friendly_token[0,20]
+      end
     end
-  end
   
-end
+  end
 end

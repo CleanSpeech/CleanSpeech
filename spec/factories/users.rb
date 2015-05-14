@@ -1,7 +1,6 @@
 #ffaker gem to produce data 
 require 'ffaker'
 
-
 #factory girl to create a basic user in the factory 
 FactoryGirl.define do
 	
@@ -11,11 +10,7 @@ FactoryGirl.define do
     	#and passwords 
         f.email { FFaker::Internet.email }
         f.password { FFaker::Internet.password }
-      
-   
-     
-
+        # f.sequence(:email) { |n| "foo#{n}@example.com" }
     end
 end
 
-#sequences
