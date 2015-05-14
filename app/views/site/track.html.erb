@@ -12,12 +12,12 @@
 			<div class="row">
 				<div class="col-xs-12 col-md-4">
 					<div class="field">	
-					<form action="">
+					<form id = "fillerWordInput" action="">
 					<h3 class="track-font">
 						Words to track
 					</h3>
 					<!-- Insert search icon here -->
-  						<input type="text" name="word">
+  						<input id = "newFiller" type="text" name="word">
   						<input type="submit" value="Add">
 					</form>
 					</div>
@@ -29,13 +29,18 @@
 						<h3 class="track-font">My Words:</h3>
 				
 				<!-- Method here for when user enters words it gets added to my words -->
-						<p class="myWords">Like</p>
+						<div id = "displayFillers" class="myWords"></div>
 					
 				
 				</div>
-
+				
 				<div class="col-xs-12 col-md-4">	
-					<img id='imgRotate' src='/assets/start_mic.png' data-swap='/assets/end_mic.png' />
+					<div class ="imgswap">
+
+						<img  id="imgClickAndChange"  src="/assets/start_mic.png" data-swap="/assets/end_mic.png"/>
+						<button class="mic-start-button" onclick="changeImage()"> START SPEAKING! </button>
+	<button class="stop-button" onclick="changeBack()"> Stop Speaking! </button>
+					</div>
 				
 				
 				</div>
@@ -43,7 +48,8 @@
 					<!-- This is the second listening screen here -->
 					
 
-			<!-- Timer will go here -->
+			Speech timer: <div id="timer"> </div>
+			Total Words: <div id="count"> </div>
 				</div>
 
 			</div>
@@ -51,14 +57,24 @@
 		</div>
 	</div>	
 
-<script type="text/javascript">
-	
-	$("#imgRotate").click(function() { 
-       var _this = $(this);
-       var current = _this.attr("src");
-       var swap = _this.attr("data-swap");     
-     _this.attr('src', swap).attr("data-swap",current);   
-});  
+<script language="javascript">
+	function changeBack(){
+	document.getElementById("imgClickAndChange").src = "/assets/start_mic.png";
+    console.log("changing to start mic");
+
+	};
+    function changeImage() {
+
+        if (document.getElementById("imgClickAndChange").src == "/assets/end_mic.png") {
+            document.getElementById("imgClickAndChange").src = "/assets/start_mic.png";
+            console.log("changing to start mic");
+        }
+        else 
+        {
+            document.getElementById("imgClickAndChange").src = "/assets/end_mic.png";
+            console.log("changing to red mic");
+        }
+    }
 </script>
 
 
