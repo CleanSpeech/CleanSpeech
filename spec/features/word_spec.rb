@@ -4,7 +4,7 @@ RSpec.feature "Word Features", :type => :feature do
 
     #creating a test so the filler word is inputted in the
     #field correctly
-    it "Creates a new filler word in the field" do
+    it "Creates a new filler word in the field on the test page" do
         #takes us to the test page
         visit "/test"
         #testing within the id fillerWordInput
@@ -20,4 +20,3 @@ RSpec.feature "Word Features", :type => :feature do
         expect(page).to_not have_content "Roboto"
         end
     end
-
