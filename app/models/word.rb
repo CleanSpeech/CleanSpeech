@@ -9,5 +9,4 @@ class Word < ActiveRecord::Base
 	accepts_nested_attributes_for :users_words
 	validates_uniqueness_of :word
 
-	
 end
