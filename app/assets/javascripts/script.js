@@ -53,8 +53,14 @@ $(function () {
 	}); //end onclick start
 
 	var fillers = [];
+	$('.actualWord').each(function() { 
+	fillers.push($(this).html());
+	});
 
 	var pickFillers = function(transcript, fillers){
+		fillers = fillers.map(function(value) {
+    		return value.toLowerCase();
+		});
 		//console.log("transcript: " + transcript);
 		// initializes an array that's the 
 		// length of the filler words array
@@ -170,10 +176,10 @@ $(".delete-user-word").click(function(){
 			timeCount +=1;
 			//hacky a.f. way to get the 
 			//recognition session to refresh
-			if (timeCount === 55){
+			if (timeCount === 5){
 				recognition.stop();
 			};
-			if (timeCount === 57){
+			if (timeCount === 7){
 				recognition.start();
 				timeCount = 0;
 			};
@@ -194,7 +200,7 @@ $(".delete-user-word").click(function(){
 
 	
 	}; // end timer
-	var fillerWordsCounts;
+	var fillerWordCounts;
 
 	var showResults = function(){
 			str = "";
@@ -214,6 +220,7 @@ $(".delete-user-word").click(function(){
 
 	$(".stop-button").click(function(){
 		console.log("CLICKED!! Now. Clicked.");
+		fillerWordCounts = pickFillers(wordArray, fillers);
 		recognition.stop();
 		//console.log("stopClicked in stop button: " + stopClicked);
 		clearInterval(newTimer);
@@ -224,16 +231,17 @@ $(".delete-user-word").click(function(){
 					time: seconds
 			}
 		});
+		myVar = setTimeout(function(){ 
+		$("#textHere").html(wordArray);
+		$("#count").html(showResults());
+		},3000);
 
 	});
 		
 			
-		fillerWordCounts = pickFillers(wordArray, fillers);
 		
-	myVar = setTimeout(function(){ 
-		$("#textHere").html(wordArray);
-		$("#count").html(showResults());
-	},3000);
+		
+
 		
 
 // To Do:

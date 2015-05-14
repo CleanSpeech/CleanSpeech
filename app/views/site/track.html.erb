@@ -30,7 +30,7 @@
 					<div id= "displayFillers"> 
 						<% @words.each do |w| %>  
 						<div class="fillerItem">
-							<%= w.word %> 
+							<div class="actualWord"><%= w.word %></div>
 							<button class="delete-user-word" data-word-id="<%= w.id %>"> X </button>
 						
 						</div>	
