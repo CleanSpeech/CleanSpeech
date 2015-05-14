@@ -27,6 +27,7 @@ gem 'devise'
 gem "omniauth"
 gem 'omniauth-facebook'
 
+gem 'pry'
 
 gem 'certified'
 

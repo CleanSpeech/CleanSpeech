@@ -2,3 +2,69 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+.body-gray {
+	padding-top: 70px;
+	background: #E6E6E5;
+	font-family: 'Questrial', sans-serif; 
+}
+
+h1, .field, .links, .actions {
+	text-align: center;
+}
+
+
+
+.field {
+	color: #F9A027;
+}
+
+#myNavbar {
+	background: #FFFFFF;
+}
+
+.clean-out {
+	text-align: left;
+
+}
+
+.myWords {
+	text-align: center;
+	color: #F9A027;
+	font-size: 25px;
+
+}
+
+.index-box {
+	 background: #40A85E;
+	 color: #FFFFFF;
+	 weight: none;
+	 padding: 25px 25px;
+	 text-align: center;
+}
+
+
+
+.icons-box {
+	
+ 	color: #F9A027;
+	padding: 50px 100px;
+	background: #FFFFFF;
+	font-size: 18px;
+	text-align: center;
+}
+
+.track-box {
+	
+ 	color: #F9A027;
+	padding: 50px 100px;
+	background: #FFFFFF;
+	text-align: center;
+}
+
+
+
+.track-font {
+	color: #61BD6D;
+	text-align: center;
+}

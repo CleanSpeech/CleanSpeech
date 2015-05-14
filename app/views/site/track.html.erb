@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+</head>
+<body>
+	
+		
+		<div class="container track-box">
+			<div class="row">
+				<div class="col-xs-12 col-md-4">
+					<div class="field">	
+					<form action="">
+					<h3 class="track-font">
+						Words to track
+					</h3>
+					<!-- Insert search icon here -->
+  						<input type="text" name="word">
+  						<input type="submit" value="Add">
+					</form>
+					</div>
+				</div>
+		
+	
+				<div class="col-xs-12 col-md-4">
+					
+						<h3 class="track-font">My Words:</h3>
+				
+				<!-- Method here for when user enters words it gets added to my words -->
+						<p class="myWords">Like</p>
+					
+				
+				</div>
+
+				<div class="col-xs-12 col-md-4">	
+					<img id='imgRotate' src='/assets/start_mic.png' data-swap='/assets/end_mic.png' />
+				
+				
+				</div>
+					<!-- AJAX to make the second screen of the mic -->
+					<!-- This is the second listening screen here -->
+					
+
+			<!-- Timer will go here -->
+				</div>
+
+			</div>
+
+		</div>
+	</div>	
+
+<script type="text/javascript">
+	
+	$("#imgRotate").click(function() { 
+       var _this = $(this);
+       var current = _this.attr("src");
+       var swap = _this.attr("data-swap");     
+     _this.attr('src', swap).attr("data-swap",current);   
+});  
+</script>
+
+
+</body>
+</html>
+
+
