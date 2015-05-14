@@ -14,10 +14,5 @@ RSpec.describe UsersWord, :type => :model do
       @word = FactoryGirl.build(:word)
 
       @user.words << @word
-  	
-  	# @usersword = UsersWord.create()
-  			
-  	# expect(@usersword).to be_valid
-  		
     end
 end
