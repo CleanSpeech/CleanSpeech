@@ -14,5 +14,9 @@ RSpec.describe SpeechAttempt, :type => :model do
   	expect(@speechattempt).to be_valid
   			
   end
-
+  #testing with factory 
+  it "creates a valid instance of speech attempts in factory" do
+    speechattempt = FactoryGirl.create(:speech_attempt)
+    expect(speechattempt).to be_instance_of SpeechAttempt
+  end 
 end

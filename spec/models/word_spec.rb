@@ -10,12 +10,13 @@ RSpec.describe Word, :type => :model do
 
   #testing for valid data entries of word 
   it "is a valid word" do
-  	
   	@word = Word.create(
   		word: 'wordwordword')
-  			
   	expect(@word).to be_valid
-  			
   end
-  	
+  #testing with factory
+  it "creates a valid instance of word" do 
+    word = FactoryGirl.create(:word)
+    expect(word).to be_instance_of Word
+  end	
 end
