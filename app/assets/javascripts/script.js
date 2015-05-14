@@ -224,50 +224,49 @@ $(".delete-user-word").click(function(){
 
 		setTimeout(function(){
 			fillerWordCounts = pickFillers(wordArray, fillers);
+			console.log("FillerWordCounts???? ", fillerWordCounts);
 		}, 2000);
+		
+
 		
 		//console.log("stopClicked in stop button: " + stopClicked);
 		clearInterval(newTimer);
 
 		//adds speech attempt to database
-		$.post("/speech_attempts.json",{
-			speech_attempt: {
-					time: seconds
+		// $.post("/speech_attempts.json",{
+		// 	speech_attempt: {
+		// 			time: seconds
 
-			}
-		});
-		myVar = setTimeout(function(){ 
-			/// $post
-		toObj(fillers, counts);
-		$("#textHere").html(wordArray);
-		$("#count").html(showResults());
+		// 	}
+	//});
+
+		myVar = setTimeout(function(){
+			//editing this right now 
+			console.log("FillerWordCounts!!! ", fillerWordCounts);
+			obj = toObj(fillers, fillerWordCounts);
+			$.post('/messing', {wordHash: obj, speech_attempt: {time: seconds}}, function(data) {
+				console.log(data);
+			})
+
+			$("#textHere").html(wordArray);
+			$("#count").html(showResults());
 		},4000);
 
 	});
 		
 			
-var toObj = function(fillers, counts){
-  var obj = {}
-  for (var i = 0; i < fillers.length; i++){
-  obj[fillers[i]]= counts[i]
-  }
-return obj;
-}
+	var toObj = function(fillers, counts){
+	  var obj = {};
+	  console.log("Filler!!: ", fillers);
+	  console.log("Counts!!: ", counts);
+	  for (var i = 0; i < fillers.length; i++){
+	  obj[fillers[i]] = counts[i];
+	  }
+	return obj;
+	};
 		
 		
-
-		
-
-// To Do:
-
-// -- Fix data structures for collecting all words
-//    vs filler words
-// -- create default user for people not logged in on which
-//		to attach collected words
-
 
 
 
 });
-
-// Update user  u.words.delete(Word.find(63))
