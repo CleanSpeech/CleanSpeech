@@ -10,7 +10,7 @@ $(function () {
 	//into this array individually
 	var stopClicked = false;
 	//grabs our button that starts listening
-	$("#mic-start-button").click(function (){
+	$(".mic-start-button").click(function (){
 		wordArray = [];
 		recognition.continuous = true;
 		//starts the speech timer
@@ -53,8 +53,14 @@ $(function () {
 	}); //end onclick start
 
 	var fillers = [];
+	$('.actualWord').each(function() { 
+	fillers.push($(this).html());
+	});
 
 	var pickFillers = function(transcript, fillers){
+		fillers = fillers.map(function(value) {
+    		return value.toLowerCase();
+		});
 		//console.log("transcript: " + transcript);
 		// initializes an array that's the 
 		// length of the filler words array
@@ -109,7 +115,7 @@ $(function () {
 	//when user clicks submit...
 	$addWordForm.on("submit", function (event) {
 		//so that the page doesn't reload onclick
-		event.preventDefault();
+		//event.preventDefault();
 		var word = $("#newFiller").val();
 		fillers.push(word);
 		$.post("/words.json", {
@@ -126,6 +132,7 @@ $(function () {
 
 $(".delete-user-word").click(function(){
 	var wordId = $(this).data("word-id");
+	var wordVal = $(this).data("word");
 	console.log("word ID" + wordId);
 	var $word = this.closest(".fillerItem");
 	console.log("$word  :::" , $word);
@@ -133,7 +140,9 @@ $(".delete-user-word").click(function(){
 		url: "/words/"+ wordId + ".json",
 		type: "PATCH"
 	}).done(function(){
-		
+		indexWord = fillers.indexOf(wordVal);
+		fillers.splice(indexWord, 1);
+		console.log(fillers);
 		//console.log()
 		$word.remove();
 		console.log(this)
@@ -191,7 +200,7 @@ $(".delete-user-word").click(function(){
 
 	
 	}; // end timer
-	var fillerWordsCounts;
+	var fillerWordCounts;
 
 	var showResults = function(){
 			str = "";
@@ -208,8 +217,11 @@ $(".delete-user-word").click(function(){
 	};
 	
 
-	$("#stopButton").click(function(){
-		
+
+	$(".stop-button").click(function(){
+		console.log("CLICKED!! Now. Clicked.");
+		fillerWordCounts = pickFillers(wordArray, fillers);
+		recognition.stop();
 		//console.log("stopClicked in stop button: " + stopClicked);
 		clearInterval(newTimer);
 
@@ -219,26 +231,18 @@ $(".delete-user-word").click(function(){
 					time: seconds
 			}
 		});
-
-		recognition.stop();
-		
-			
-		fillerWordCounts = pickFillers(wordArray, fillers);
-		
-	myVar = setTimeout(function(){ 
+		myVar = setTimeout(function(){ 
 		$("#textHere").html(wordArray);
 		$("#count").html(showResults());
-		},3000)
-		
-		
-		
+		},3000);
 
-
-
-
-		//stopClicked = true;
 	});
+		
+			
+		
+		
 
+		
 
 // To Do:
 
@@ -248,13 +252,7 @@ $(".delete-user-word").click(function(){
 //		to attach collected words
 
 
-// create button DONE
-// Write ajax delete method - client
-// write route to words#update - server
-// write words#update method - server
-// write response in words#update - server
-// check response in console.log in ajax delete callback -client
-// update DOM in ajax delete callback -client
+
 
 });
 

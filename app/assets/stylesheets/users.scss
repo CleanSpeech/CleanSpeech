@@ -75,9 +75,32 @@ h1, .field, .links, .actions {
 	text-align: center;
 }
 
-
-
 .track-font {
 	color: #61BD6D;
 	text-align: center;
+}
+
+#displayFillers{
+	display: flex;
+	flex-wrap: wrap;
+}
+.fillerItem{
+	padding: 2px 3px 2px 5px;
+	border-radius: 6px;
+	background-color: white;
+	margin: 4px;
+	border: solid 1px;
+	border-color: #F9A027;
+	display: inline;
+}
+.actualWord{
+	display: inline;
+}
+.delete-user-word{
+	background-color: white;
+	border: none;
+	display: inline;
+}
+.delete-user-word:hover{
+	color: green;
 }
