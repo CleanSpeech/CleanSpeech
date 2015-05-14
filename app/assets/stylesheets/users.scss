@@ -13,7 +13,9 @@ h1, .field, .links, .actions {
 	text-align: center;
 }
 
-
+.fillers {
+	flex-direction: row | row-reverse | column | column-reverse;
+}
 
 .field {
 	color: #F9A027;
