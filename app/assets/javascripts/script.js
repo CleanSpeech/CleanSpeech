@@ -176,10 +176,10 @@ $(".delete-user-word").click(function(){
 			timeCount +=1;
 			//hacky a.f. way to get the 
 			//recognition session to refresh
-			if (timeCount === 5){
+			if (timeCount === 55){
 				recognition.stop();
 			};
-			if (timeCount === 7){
+			if (timeCount === 57){
 				recognition.start();
 				timeCount = 0;
 			};
@@ -220,40 +220,53 @@ $(".delete-user-word").click(function(){
 
 	$(".stop-button").click(function(){
 		console.log("CLICKED!! Now. Clicked.");
-		fillerWordCounts = pickFillers(wordArray, fillers);
 		recognition.stop();
+
+		setTimeout(function(){
+			fillerWordCounts = pickFillers(wordArray, fillers);
+			console.log("FillerWordCounts???? ", fillerWordCounts);
+		}, 2000);
+		
+
+		
 		//console.log("stopClicked in stop button: " + stopClicked);
 		clearInterval(newTimer);
 
 		//adds speech attempt to database
-		$.post("/speech_attempts.json",{
-			speech_attempt: {
-					time: seconds
-			}
-		});
-		myVar = setTimeout(function(){ 
-		$("#textHere").html(wordArray);
-		$("#count").html(showResults());
-		},3000);
+		// $.post("/speech_attempts.json",{
+		// 	speech_attempt: {
+		// 			time: seconds
+
+		// 	}
+	//});
+
+		myVar = setTimeout(function(){
+			//editing this right now 
+			console.log("FillerWordCounts!!! ", fillerWordCounts);
+			obj = toObj(fillers, fillerWordCounts);
+			$.post('/messing', {wordHash: obj, speech_attempt: {time: seconds}}, function(data) {
+				console.log(data);
+			})
+
+			$("#textHere").html(wordArray);
+			$("#count").html(showResults());
+		},4000);
 
 	});
 		
 			
+	var toObj = function(fillers, counts){
+	  var obj = {};
+	  console.log("Filler!!: ", fillers);
+	  console.log("Counts!!: ", counts);
+	  for (var i = 0; i < fillers.length; i++){
+	  obj[fillers[i]] = counts[i];
+	  }
+	return obj;
+	};
 		
 		
-
-		
-
-// To Do:
-
-// -- Fix data structures for collecting all words
-//    vs filler words
-// -- create default user for people not logged in on which
-//		to attach collected words
-
 
 
 
 });
-
-// Update user  u.words.delete(Word.find(63))

@@ -67,6 +67,10 @@ group :development, :test do
   # installing factory_girl_rails to create factories to test models
   gem "factory_girl_rails", "~> 4.0"
 
+  gem 'capybara'
+
+  # gem 'selenium-webdriver'
+
 end
 
 group :test do

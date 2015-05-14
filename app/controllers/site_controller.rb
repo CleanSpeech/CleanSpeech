@@ -9,9 +9,13 @@ class SiteController < ApplicationController
 	end
 
 	def show
-		
-		@words = current_user.words
-	 	render :track
+		unless user_signed_in?
+	 		redirect_to "/users/sign_in", :alert => 'Please log in.'
+		else
+			@words = current_user.words
+			render :track		
+
+	 	end
 	end
 
 end
