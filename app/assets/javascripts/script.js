@@ -109,7 +109,7 @@ $(function () {
 	//when user clicks submit...
 	$addWordForm.on("submit", function (event) {
 		//so that the page doesn't reload onclick
-		event.preventDefault();
+		//event.preventDefault();
 		var word = $("#newFiller").val();
 		fillers.push(word);
 		$.post("/words.json", {
@@ -126,6 +126,7 @@ $(function () {
 
 $(".delete-user-word").click(function(){
 	var wordId = $(this).data("word-id");
+	var wordVal = $(this).data("word");
 	console.log("word ID" + wordId);
 	var $word = this.closest(".fillerItem");
 	console.log("$word  :::" , $word);
@@ -133,7 +134,9 @@ $(".delete-user-word").click(function(){
 		url: "/words/"+ wordId + ".json",
 		type: "PATCH"
 	}).done(function(){
-		
+		indexWord = fillers.indexOf(wordVal);
+		fillers.splice(indexWord, 1);
+		console.log(fillers);
 		//console.log()
 		$word.remove();
 		console.log(this)
