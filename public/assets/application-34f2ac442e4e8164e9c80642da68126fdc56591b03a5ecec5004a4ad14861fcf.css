@@ -1,0 +1,148 @@
+/* line 6, /Users/emilyhittle/Documents/code/ruby_apps/clean_speech/app/assets/stylesheets/users.scss */
+.body-gray {
+  padding-top: 70px;
+  background: #E6E6E5;
+  font-family: 'Questrial', sans-serif;
+}
+
+/* line 12, /Users/emilyhittle/Documents/code/ruby_apps/clean_speech/app/assets/stylesheets/users.scss */
+h1, .field, .links, .actions {
+  text-align: center;
+}
+
+/* line 22, /Users/emilyhittle/Documents/code/ruby_apps/clean_speech/app/assets/stylesheets/users.scss */
+.minChar {
+  font-size: 12px;
+  padding-right: 20px;
+}
+
+/* line 27, /Users/emilyhittle/Documents/code/ruby_apps/clean_speech/app/assets/stylesheets/users.scss */
+.email {
+  padding-right: 100px;
+}
+
+/* line 31, /Users/emilyhittle/Documents/code/ruby_apps/clean_speech/app/assets/stylesheets/users.scss */
+.password {
+  padding-right: 80px;
+}
+
+/* line 35, /Users/emilyhittle/Documents/code/ruby_apps/clean_speech/app/assets/stylesheets/users.scss */
+.password-email {
+  padding-top: 15px;
+}
+
+/* line 40, /Users/emilyhittle/Documents/code/ruby_apps/clean_speech/app/assets/stylesheets/users.scss */
+#myNavbar {
+  background: #FFFFFF;
+}
+
+/* line 43, /Users/emilyhittle/Documents/code/ruby_apps/clean_speech/app/assets/stylesheets/users.scss */
+a {
+  color: #F9A027;
+}
+
+/* line 47, /Users/emilyhittle/Documents/code/ruby_apps/clean_speech/app/assets/stylesheets/users.scss */
+a:hover {
+  text-decoration: none;
+}
+
+/* line 50, /Users/emilyhittle/Documents/code/ruby_apps/clean_speech/app/assets/stylesheets/users.scss */
+.clean-out {
+  text-align: left;
+}
+
+/* line 55, /Users/emilyhittle/Documents/code/ruby_apps/clean_speech/app/assets/stylesheets/users.scss */
+.myWords {
+  text-align: center;
+  color: #F9A027;
+  font-size: 25px;
+}
+
+/* line 62, /Users/emilyhittle/Documents/code/ruby_apps/clean_speech/app/assets/stylesheets/users.scss */
+.index-box {
+  background: #40A85E;
+  color: #FFFFFF;
+  weight: none;
+  padding: 25px 25px;
+  text-align: center;
+}
+
+/* line 71, /Users/emilyhittle/Documents/code/ruby_apps/clean_speech/app/assets/stylesheets/users.scss */
+.icons-box {
+  color: #F9A027;
+  padding: 50px 100px;
+  background: #FFFFFF;
+  font-size: 18px;
+  text-align: center;
+}
+
+/* line 80, /Users/emilyhittle/Documents/code/ruby_apps/clean_speech/app/assets/stylesheets/users.scss */
+.track-box {
+  color: #F9A027;
+  background: #FFFFFF;
+  text-align: center;
+}
+
+/* line 87, /Users/emilyhittle/Documents/code/ruby_apps/clean_speech/app/assets/stylesheets/users.scss */
+.track-font {
+  color: #61BD6D;
+  text-align: center;
+}
+
+/* line 92, /Users/emilyhittle/Documents/code/ruby_apps/clean_speech/app/assets/stylesheets/users.scss */
+#displayFillers {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* line 96, /Users/emilyhittle/Documents/code/ruby_apps/clean_speech/app/assets/stylesheets/users.scss */
+.fillerItem {
+  padding: 2px 3px 2px 5px;
+  border-radius: 6px;
+  background-color: white;
+  margin: 4px;
+  border: solid 1px;
+  border-color: #F9A027;
+  display: inline;
+}
+
+/* line 105, /Users/emilyhittle/Documents/code/ruby_apps/clean_speech/app/assets/stylesheets/users.scss */
+.actualWord {
+  display: inline;
+}
+
+/* line 108, /Users/emilyhittle/Documents/code/ruby_apps/clean_speech/app/assets/stylesheets/users.scss */
+.delete-user-word {
+  background-color: white;
+  border: none;
+  display: inline;
+}
+
+/* line 113, /Users/emilyhittle/Documents/code/ruby_apps/clean_speech/app/assets/stylesheets/users.scss */
+.delete-user-word:hover {
+  color: green;
+}
+
+/* line 118, /Users/emilyhittle/Documents/code/ruby_apps/clean_speech/app/assets/stylesheets/users.scss */
+#buttons {
+  display: flex;
+  flex-wrap: wrap;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+ */
+
+
+h1 { font-family: ‘Metrophobic’, Arial, serif; font-weight: 400; }

@@ -6,11 +6,6 @@ require 'rspec/rails'
 require 'devise'
 require 'support/controller_macros'
 require 'factory_girl_rails'
-# require 'capybara/rspec'
-
-
-
-
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -33,14 +28,6 @@ RSpec.configure do |config|
   config.extend ControllerMacros, :type => :controller
   # config.extend RequestHelpers, :type => :request
   config.include Warden::Test::Helpers
-  # Warden.test_mode!
-
-  #  def teardown                                         
-  #   Warden.test_reset!                                 
-  #  end   
-  
-  #include factory girl syntax
-  # config.include FactoryGirl::Syntax::Methods
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"

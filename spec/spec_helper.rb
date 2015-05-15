@@ -3,19 +3,7 @@ require 'devise'
 require 'capybara/rspec'
 # require 'capybara/rails'
 
-
-
 RSpec.configure do |config|
-
-  # config.include Devise::TestHelpers, :type => :controller
-  # include Warden::Test::Helpers
-  # Warden.test_mode!
-
-  #  def teardown                                         
-  #   Warden.test_reset!                                 
-  #  end   
- 
-
 
   # Print the 10 slowest examples and example groups at the
   # end of the spec run, to help surface which specs are running

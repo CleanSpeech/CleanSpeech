@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby '2.2.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
@@ -30,6 +30,8 @@ gem 'omniauth-facebook'
 gem 'pry'
 
 gem 'certified'
+
+gem 'rails_12factor', group: :production
 
 
 gem 'chartkick', '~> 1.3.2'
