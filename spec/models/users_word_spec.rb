@@ -9,10 +9,9 @@ RSpec.describe UsersWord, :type => :model do
 
   	#testing for valid data entries of UsersWord 
   	it "is a valid users word" do
-
-      @user = FactoryGirl.build(:user)
-      @word = FactoryGirl.build(:word)
-
+      @user = FactoryGirl.create(:user)
+      @word = FactoryGirl.create(:word)
+      
       @user.words << @word
     end
 end

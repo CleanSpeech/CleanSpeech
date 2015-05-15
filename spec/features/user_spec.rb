@@ -13,9 +13,9 @@ RSpec.describe "User Features", :type => :feature do
   end
 
   #testing for successful user sign in on the page
-   it "displays the user's email after successful sign in" do
+  it "displays the user's email after successful sign in" do
     #building a factory with specified email and password for FactoryGirl
-    @user = FactoryGirl.build(:user, :email => "jdoe@example.com", :password => "secretsecret")
+    @user = FactoryGirl.create(:user, :email => "jdoe@example.com", :password => "secretsecret")
     #takes us to the main route page
     visit "/users/sign_up"
     #takes us to the sign in form
@@ -34,7 +34,7 @@ RSpec.describe "User Features", :type => :feature do
 
   #basically same test as above but testing for incorrect password to reject the sign in
   it "tries to sign in with incorrect password" do 
-    @user = FactoryGirl.build(:user, :email => "jdoe@example.com", :password => "secretsecret")
+    @user = FactoryGirl.create(:user, :email => "jdoe@example.com", :password => "secretsecret")
     visit "/users/sign_up"
     visit "form.sign_in" do
         fill_in "Email", :with => "jdoe@example.com"
@@ -45,7 +45,6 @@ RSpec.describe "User Features", :type => :feature do
     expect(page).to be_invalid
     end
   end
-
 end 
 
 

@@ -10,5 +10,4 @@ RSpec.describe "home page", :type => :feature do
     #testing for false positive, if we include to_not it causes a test failure
     expect(page).to have_css "h3", text: "Use CleanSpeech to get rid of words from your vocabulary"
   end
-
 end
