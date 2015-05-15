@@ -11,7 +11,7 @@ RSpec.describe Word, :type => :model do
   #testing for valid data entries of word 
   it "is a valid word" do
   	@word = Word.create(
-  		word: 'wordwordword')
+  		word: 'thankyouverymuch')
   	expect(@word).to be_valid
   end
   #testing with factory

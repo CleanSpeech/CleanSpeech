@@ -12,6 +12,8 @@ $(function () {
 	//grabs our button that starts listening
 	$(".mic-start-button").click(function (){
 		wordArray = [];
+		
+
 		recognition.continuous = true;
 		//starts the speech timer
 		timer();
@@ -21,10 +23,11 @@ $(function () {
 		
 		recognition.onresult = function(event) { 
 			recognition.continuous = true;
-
+			console.log("onresult true");
 			
 			// "event.results[0][0].transcript" is our transcript of all the words
 			transcript = event.results[0][0].transcript;
+			console.log("Innitial transcript: " ,transcript);
 			
 			// This pushes each of the transcripts into the temp array,
 			// and then adds each of the words into the wordArray
@@ -206,7 +209,7 @@ $(".delete-user-word").click(function(){
 			str = "";
 
 			for (var x = 0; x < fillers.length; x++){
-				console.log("Fillers[x]: " + fillers[x]);
+				//console.log("Fillers[x]: " + fillers[x]);
 				str += (fillers[x] + ": " + fillerWordCounts[x] + "<br>");
 			}
 			console.log("fillers in show results: ", fillers);
@@ -220,6 +223,7 @@ $(".delete-user-word").click(function(){
 		recognition.stop();
 
 		setTimeout(function(){
+			console.log("TRANSCRIPT!!!! : ", wordArray);
 			fillerWordCounts = pickFillers(wordArray, fillers);
 			console.log("FillerWordCounts???? ", fillerWordCounts);
 		}, 2000);
@@ -246,8 +250,10 @@ $(".delete-user-word").click(function(){
 
 			console.log("FillerWordCounts!!! ", fillerWordCounts.length, fillers.length);
 			obj = toObj(fillers, fillerWordCounts);
+
 			console.log("THESE FILLERS RIGHT NOW...", fillers);
 			console.log("OBJ IS", obj)
+
 			$.post('/messing', {wordHash: obj, speech_attempt: {time: seconds}}, function(data) {
 				console.log(data);
 			})
