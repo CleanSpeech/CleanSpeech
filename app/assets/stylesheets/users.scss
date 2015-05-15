@@ -1,0 +1,123 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.body-gray {
+	padding-top: 70px;
+	background: #E6E6E5;
+	font-family: 'Questrial', sans-serif; 
+}
+
+h1, .field, .links, .actions {
+	text-align: center;
+}
+
+
+
+
+
+
+
+.minChar {
+	font-size: 12px;
+	padding-right: 20px;
+}
+
+.email {
+	padding-right: 100px;
+}
+
+.password {
+	padding-right: 80px;
+}
+
+.password-email {
+	
+	padding-top: 15px;
+}
+
+#myNavbar {
+	background: #FFFFFF;
+}
+a{
+	color: #F9A027;
+}
+
+a:hover {
+	text-decoration: none;
+}
+.clean-out {
+	text-align: left;
+
+}
+
+.myWords {
+	text-align: center;
+	color: #F9A027;
+	font-size: 25px;
+
+}
+
+.index-box {
+	 background: #40A85E;
+	 color: #FFFFFF;
+	 weight: none;
+	 padding: 25px 25px;
+	 text-align: center;
+}
+
+
+.icons-box {
+ 	color: #F9A027;
+	padding: 50px 100px;
+	background: #FFFFFF;
+	font-size: 18px;
+	text-align: center;
+}
+
+
+.track-box {
+	
+ 	color: #F9A027;
+	background: #FFFFFF;
+	text-align: center;
+}
+
+.track-font {
+	color: #61BD6D;
+	text-align: center;
+}
+
+#displayFillers{
+	display: flex;
+	flex-wrap: wrap;
+}
+.fillerItem{
+	padding: 2px 3px 2px 5px;
+	border-radius: 6px;
+	background-color: white;
+	margin: 4px;
+	border: solid 1px;
+	border-color: #F9A027;
+	display: inline;
+}
+.actualWord{
+	display: inline;
+}
+.delete-user-word{
+	background-color: white;
+	border: none;
+	display: inline;
+}
+.delete-user-word:hover{
+	color: green;
+}
+
+
+#buttons{
+	display: flex;
+	flex-wrap: wrap;
+}
+
+

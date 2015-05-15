@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+</head>
+<body>
+	<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+		
+	<div class="container track-box">
+		<div class="row">
+			<div class="col-xs-12 col-md-8">
+				<div class="field">	
+				<form id = "fillerWordInput" action="">
+				<h3 class="track-font">
+					Words to track
+				</h3>
+				<!-- Insert search icon here -->
+						<input id ="newFiller" type="text" name="word">
+						<input type="submit" value="Add">
+				</form>
+				</div>
+			</div>
+		
+	
+			<div class="col-xs-12 col-md-4">
+				<h3 class="track-font">My Words:</h3>
+				<div id= "displayFillers"> 
+					<% @words.each do |w| %>  
+						<div class="fillerItem">
+							<div class="actualWord"><%= w.word %></div>
+							<button class="delete-user-word" data-word-id="<%= w.id %>"> X </button>
+						</div>	
+					<% end  %>
+				</div>
+			</div>
+				
+				
+				<div class="col-xs-12 col-md-8">	
+					<div class ="imgswap">
+
+
+						<img  id="imgClickAndChange"  src="/assets/start_mic.png" data-swap="/assets/end_mic.png"/>
+
+							
+						<div class="row">	
+							<div class="col-xs-12 col-md-12">
+							 
+								<button class="mic-start-button" onclick="changeImage()"> Start </button>
+
+								
+								<button class="stop-button"  onclick="changeBack()"> Stop! </button>
+							</div>
+
+							<div class="col-xs-12 col-md-12">
+						Speech timer: <div id="timer"> </div>
+						Total Words: <div id="count"> </div>
+						<% @words_array.reverse.each do |thing| %>
+							<%= bar_chart(thing) %>
+					<% end %>
+						<%= @words_array.inspect  %>
+
+			</div>
+					
+						</div>
+					</div>
+
+
+
+		
+						
+	
+					</div>
+				</div>
+			</div>	
+				
+			
+			<!-- AJAX to make the second screen of the mic -->
+					<!-- This is the second listening screen here -->
+					
+
+			
+				
+		</div>
+	
+
+
+ 
+				
+
+<script language="javascript">
+	function changeBack(){
+	document.getElementById("imgClickAndChange").src = "/assets/start_mic.png";
+    console.log("changing to start mic");
+
+	};
+    function changeImage() {
+
+        if (document.getElementById("imgClickAndChange").src == "/assets/end_mic.png") {
+            document.getElementById("imgClickAndChange").src = "/assets/start_mic.png";
+            console.log("changing to start mic");
+        }
+        else 
+        {
+            document.getElementById("imgClickAndChange").src = "/assets/end_mic.png";
+            console.log("changing to red mic");
+        }
+    }
+</script>
+
+
+</body>
+</html>
+
+
