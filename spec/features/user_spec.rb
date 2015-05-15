@@ -28,7 +28,7 @@ RSpec.describe "User Features", :type => :feature do
     click_button "Sign Up"
 
     #expecting the page to have the email rendered with the text below
-    expect(page).to_not have_selector(".header .email", :text => "jdoe@example.com")
+    expect(page).to have_selector("Email", :text => "jdoe@example.com")
     end
   end
 
