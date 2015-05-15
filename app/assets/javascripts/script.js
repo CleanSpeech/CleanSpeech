@@ -207,10 +207,7 @@ $(".delete-user-word").click(function(){
 
 	var showResults = function(){
 			str = "";
-			if (fillers.indexOf("*swears") === -1){
-				fillers.push("*swears");
-				console.log("adding swears");
-			};
+
 			for (var x = 0; x < fillers.length; x++){
 				//console.log("Fillers[x]: " + fillers[x]);
 				str += (fillers[x] + ": " + fillerWordCounts[x] + "<br>");
@@ -246,9 +243,17 @@ $(".delete-user-word").click(function(){
 
 		myVar = setTimeout(function(){
 			//editing this right now 
-			console.log("FillerWordCounts!!! ", fillerWordCounts);
+			if (fillers.indexOf("*swears") === -1){
+				fillers.push("*swears");
+				console.log("adding swears");
+			};
+
+			console.log("FillerWordCounts!!! ", fillerWordCounts.length, fillers.length);
 			obj = toObj(fillers, fillerWordCounts);
-			console.log("THIS IS OBJ", obj);
+
+			console.log("THESE FILLERS RIGHT NOW...", fillers);
+			console.log("OBJ IS", obj)
+
 			$.post('/messing', {wordHash: obj, speech_attempt: {time: seconds}}, function(data) {
 				console.log(data);
 			})

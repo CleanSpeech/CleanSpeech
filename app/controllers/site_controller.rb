@@ -13,10 +13,29 @@ class SiteController < ApplicationController
 	 		redirect_to "/users/sign_in", :alert => 'Please log in.'
 		else
 			@words = current_user.words
-			@user_words_speech_attempts = UsersWordsSpeechAttempt.all
-			@user = current_user
-			@speech_attempts = SpeechAttempt.all	
-			@attempts = @user.speech_attempts
+
+			@words_array = []
+
+			user = current_user
+			@attempts = user.speech_attempts
+				#byebug
+				@attempts.each do |attempt|
+						word_hash = {}
+					attempt.words.each do |werd|
+				 	theWord = werd.word
+
+
+				 	foo = UsersWordsSpeechAttempt.where(speech_attempt_id: attempt.id, word_id: werd.id)[0]
+					theCount = foo.count
+					word_hash[theWord] = theCount
+					#byebug
+				end
+				@words_array << word_hash
+			
+			end
+
+			render :track		
+
 
 			# @attwrds = @attempts.words
 			# @count = @attwrds.count

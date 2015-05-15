@@ -6,7 +6,7 @@
 
 </head>
 <body>
-	
+	<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
 		
 	<div class="container track-box">
 		<div class="row">
@@ -59,12 +59,14 @@
 					<!-- This is the second listening screen here -->
 					
 
-					Speech timer: <div id="timer"> </div>
-					Total Words: <div id="count"> </div>
-			<div id="graph">
-				<div class="col-xs-6">
-    				<h3>Total Words for this Speech Attempt</h3>
-    				<%= bar_chart @speech_attempts.group(:time).count %>
+			Speech timer: <div id="timer"> </div>
+			Total Words: <div id="count"> </div>
+			<% @words_array.reverse.each do |thing| %>
+				<%= bar_chart(thing) %>
+		<% end %>
+			<%= @words_array.inspect  %>
+				</div>
+
 
   				</div>
 			</div>

@@ -31,6 +31,7 @@ gem 'pry'
 
 gem 'certified'
 
+
 gem 'chartkick', '~> 1.3.2'
 
 # Use ActiveModel has_secure_password
