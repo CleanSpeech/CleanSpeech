@@ -31,7 +31,7 @@ gem 'pry'
 
 gem 'certified'
 
-gem 'rails_12factor'
+gem 'rails_12factor', group: :production
 
 
 gem 'chartkick', '~> 1.3.2'
