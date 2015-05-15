@@ -1,15 +1,12 @@
 RSpec.describe User, :type => :model do
- 
   before :each do
-
   end
 
   #creating a new instance of user through factorygirl 
   it "creates a valid instance of the user" do
-    user = FactoryGirl.build(:user)
+    user = FactoryGirl.create(:user)
     expect(user).to be_instance_of User
     # it { should_expect(@user).to be_valid }
-
     #call this in rails console using user = FactoryGirl.create(:user)
   end
 
