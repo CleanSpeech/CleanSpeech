@@ -8,6 +8,7 @@ RSpec.describe UsersController, :type => :controller do
 	 	it "should grant user access" do
      		user = FactoryGirl.build(:user)
       		session[:user_id] = user.id
+      		expect(user).to be_valid
 	 	end
 
 	 #testing that the users index can be rendered and gives the right http status
