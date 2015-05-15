@@ -6,7 +6,7 @@
 
 </head>
 <body>
-	
+	<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
 		
 		<div class="container track-box">
 			<div class="row">
@@ -59,6 +59,10 @@
 
 			Speech timer: <div id="timer"> </div>
 			Total Words: <div id="count"> </div>
+			<% @words_array.reverse.each do |thing| %>
+				<%= bar_chart(thing) %>
+		<% end %>
+			<%= @words_array.inspect  %>
 				</div>
 
 			</div>

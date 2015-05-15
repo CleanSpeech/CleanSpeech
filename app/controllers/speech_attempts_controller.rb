@@ -15,8 +15,10 @@ class SpeechAttemptsController < ApplicationController
 		@user = current_user
 		@words = @user.words
 		@speech_attempt = SpeechAttempt.create(params.require(:speech_attempt).permit(:time))
+		@speech_attempt.user = @user
 		@word_hash = params[:wordHash]
-	#	byebug
+
+	# byebug
 		@word_hash.each do |word, count|
 			werd = UsersWordsSpeechAttempt.create
 			werd.speech_attempt = @speech_attempt
