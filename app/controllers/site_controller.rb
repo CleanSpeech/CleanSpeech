@@ -35,11 +35,7 @@ class SiteController < ApplicationController
 			end
 
 			render :track		
-
-
-			# @attwrds = @attempts.words
-			# @count = @attwrds.count
-			render :track		
+	
 	 	end
 	end
 
