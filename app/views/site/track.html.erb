@@ -62,9 +62,13 @@
 			Speech timer: <div id="timer"> </div>
 			Total Words: <div id="count"> </div>
 			<% @words_array.reverse.each do |thing| %>
+			Performed at: <%= @created  %>
+		</br>
+			Duration of Speech: <%= @time  %> seconds
 				<%= bar_chart(thing) %>
+
 		<% end %>
-			<%= @words_array.inspect  %>
+
 				</div>
 
 
