@@ -33,17 +33,29 @@
 					<% end  %>
 				</div>
 			</div>
-			<div class="col-xs-12 col-md-8">	
-				<div class ="imgswap">
-					<img  id="imgClickAndChange"  src="/assets/start_mic.png" data-swap="/assets/end_mic.png"/>	
-				</div>
-				<div class="row">	
-					<div class="col-xs-12 col-md-12">
-						<button class="mic-start-button" onclick="changeImage()"> Start </button>			
-						<button class="stop-button"  onclick="changeBack()"> Stop! </button>
-					</div>
-					<div class="col-xs-12 col-md-12">
-						Speech timer: <div id="timer"> </div>
+
+
+				
+				
+				<div class="col-xs-12 col-md-8">	
+					<div class ="imgswap">
+
+						<div id="timer"> </div>
+						<img  id="imgClickAndChange"  src="/assets/start_mic.png" data-swap="/assets/end_mic.png"/>
+
+							
+						<div class="row">	
+							<div class="col-xs-12 col-md-12">
+							 
+								<button class="mic-start-button" onclick="changeImage()"> Start </button>
+
+								
+								<button class="stop-button"  onclick="changeBack()"> Stop! </button>
+							</div>
+
+							<div class="col-xs-12 col-md-12">
+						
+
 						Total Words: <div id="count"> </div>
 						<% @words_array.reverse.each do |thing| %>
 							Performed at: <%= @created  %>

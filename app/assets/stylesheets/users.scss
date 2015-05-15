@@ -76,9 +76,15 @@ a:hover {
 	text-align: center;
 }
 
+.mic-start-botton, .stop-button{
+	margin-top: 20px;
+	margin-bottom: 20px;
+
+}
 
 .track-box {
 	
+	font-size: 18px;
  	color: #F9A027;
 	background: #FFFFFF;
 	text-align: center;
@@ -94,10 +100,11 @@ a:hover {
 	flex-wrap: wrap;
 }
 .fillerItem{
+	font-size: 20px;
 	padding: 2px 3px 2px 5px;
 	border-radius: 6px;
 	background-color: white;
-	margin: 4px;
+	margin: 5px;
 	border: solid 1px;
 	border-color: #F9A027;
 	display: inline;
@@ -111,9 +118,15 @@ a:hover {
 	display: inline;
 }
 .delete-user-word:hover{
-	color: green;
+	color: #40A85E;
+	font-weight: bold;
 }
 
+#timer {
+	color: red;
+	font-size: 18px;
+	padding-bottom: 20px;
+}
 
 #buttons{
 	display: flex;
