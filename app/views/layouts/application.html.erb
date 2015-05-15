@@ -23,6 +23,7 @@
 
     
     <link href='http://fonts.googleapis.com/css?family=Questrial' rel='stylesheet' type='text/css'>
+    <%= favicon_link_tag 'favicon.ico' %>
 </head>
 
 
@@ -44,9 +45,13 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
+                    <% if !user_signed_in? %>
                     <li><%= link_to 'Log in', new_user_session_path %></li>
                     <li><%= link_to 'Sign up', new_user_registration_path %></li>
+                    <% end  %>
+                    <% if user_signed_in? %>
                     <li><li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
+                     <% end  %>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">

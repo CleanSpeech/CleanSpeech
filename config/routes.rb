@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 	get "/track" => "site#show" 
 	post "/track" => "words#create"
 	patch "/track/:id" => "words#update"
+	post "/messing" => "speech_attempts#bindUWSA"
 	
 	  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
 	  resources :users

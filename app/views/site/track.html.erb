@@ -29,12 +29,12 @@
 						<h3 class="track-font">My Words:</h3>
 					<div id= "displayFillers"> 
 						<% @words.each do |w| %>  
-						<div class="fillerItem">
-							<%= w.word %> 
-							<button class="delete-user-word" data-word-id="<%= w.id %>"> X </button>
-						
-						</div>	
-					<% end  %>
+							<div class="fillerItem">
+								<div class="actualWord"><%= w.word %></div>
+								<button class="delete-user-word" data-word-id="<%= w.id %>"> X </button>
+							
+							</div>	
+						<% end  %>
 					</div>
 				
 				<!-- Method here for when user enters words it gets added to my words -->
