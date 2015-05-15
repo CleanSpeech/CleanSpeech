@@ -120,15 +120,18 @@ $(function () {
 		//so that the page doesn't reload onclick
 		//event.preventDefault();
 		var word = $("#newFiller").val();
-		fillers.push(word);
-		$.post("/words.json", {
-			word: {
-				word: word
-			}
-		}).done(function (createdWord){
-			console.log(fillers);
-			$("#displayFillers").append(createdWord.word + "<button class=\"delete-user-word\" data-word-id=\"<%= w.id %>\"> X </button>" +"<br>");
-		})
+		if (fillers.indexOf(word) === -1){
+			fillers.push(word);
+			$.post("/words.json", {
+				word: {
+					word: word
+				}
+			}).done(function (createdWord){
+				console.log("got here!");
+				console.log(fillers);
+				$("#displayFillers").append(createdWord.word + "<button class=\"delete-user-word\" data-word-id=\"<%= w.id %>\"> X </button>" +"<br>");
+			})
+		}
 	});
 
 
