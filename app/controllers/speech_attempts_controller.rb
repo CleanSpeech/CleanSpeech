@@ -20,16 +20,18 @@ class SpeechAttemptsController < ApplicationController
 
 	# byebug
 		@word_hash.each do |word, count|
-			werd = UsersWordsSpeechAttempt.create
+			werd = UsersWordsSpeechAttempt.new
 			werd.speech_attempt = @speech_attempt
 			the_word = Word.find_by(word: word)
 			werd.word = the_word
 			werd.count = count.to_i
 			werd.save
-			@speech_attempt.words << the_word
+			if the_word.is_a?(Word)
+				@speech_attempt.words << the_word
+			end
 		end
 
-@speech_attempt.save
-		render json: {it: "WORKED"}
+		@speech_attempt.save
+		render body: "It worked"
 	end
 end
