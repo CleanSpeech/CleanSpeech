@@ -1,5 +1,6 @@
 
 $(function () {
+		
 	var transcript;
 	var wordArray = [];
 
@@ -28,83 +29,84 @@ $(function () {
 			// "event.results[0][0].transcript" is our transcript of all the words
 			transcript = event.results[0][0].transcript;
 			console.log("Innitial transcript: " ,transcript);
-			
+
 			// This pushes each of the transcripts into the temp array,
 			// and then adds each of the words into the wordArray
-			tempArray = transcript.split(" ");
-			for (i=0; i < tempArray.length; i++){
-				wordArray.push(tempArray[i]);
-			}
-			
-			console.log("WordArray: ", wordArray);
-			
-			// puts the words the user entered
-			// onto the page next to the number of 
-			// times the user used them
+			wordArray = transcript.split(" ");
 
-			//SHOW RESULTS --taken from here and put in stopclick
-			
-			//puts the transcript on the page REMOVED FROM HERE
-			
+			// console.log("Testing yoda temp Array", tempArray);
+			// for (i=0; i < tempArray.length; i++){
+			// 	wordArray.push(tempArray[i]);
+			// }
+
 		}
 		recognition.start();
-		console.log("starting!!")
+		// console.log("starting!!");
 		//calls listener function
 
-		//console.log(fillers);
-		
 	}); //end onclick start
-
+///////////////////////////////////////////////////// FIX THIS DAMNIT.
+// This takes the words the user has input from the page...(really?) and puts them
+// in the array to track. Sorry.
 	var fillers = [];
-	$('.actualWord').each(function() { 
+	$('.actualWord').each(function() {
 	fillers.push($(this).html());
 	});
+///////////////////////////////////////////////////// Pull these from the database. Like an adult.
 
-	var pickFillers = function(transcript, fillers){
+	var pickFillers = function(wordArray, fillers){
+		//making sure all of our filler words are lower case
+		//to avoid weird case conflicts
+		//NEED TO ADD THIS FOR WORD ARRAY AS WELL.
 		fillers = fillers.map(function(value) {
     		return value.toLowerCase();
 		});
-		//console.log("transcript: " + transcript);
-		// initializes an array that's the 
+
+		// initializes an array that's the
 		// length of the filler words array
+		// in order to have a corresponding count
+		// REFACTOR WITH KEY VALUE OBJECTS
 		var counts = counts || fillers.slice();
 		counts.forEach(function(el,id,arr){
 			arr[id] = 0;
 		});
-		if (fillers.indexOf("*swears") === -1 && counts.length < fillers.length + 1 ){
-		counts.push(0);
-		}
 
 		// this is to add one at the end to count swears
-		
+		// ////                  ///////                              /////     +1  ??
+		// if (fillers.indexOf("*swears") === -1 && counts.length < fillers.length    ){
+		// counts.push(0);
+		// }
+
+		console.log("hello from inside pick Fillers before cycling through fillers.");
 		//cycles through filler words
 		for (var k = 0; k < fillers.length; k++ ){
 			var filler = fillers[k];
 			counts[k] = 0;
-			//counts[k] = counts[k] || 0;
 			//if there's a space in the filler word...
 			//which means that there are two words in the filler
 			if (filler.indexOf(" ") != -1){
 				var doubleWord = filler.split(" ");
 				var d = doubleWord[0];
 				var w = doubleWord[1];
-				for (var i = 0; i < transcript.length-1; i++){
+				for (var i = 0; i < wordArray.length-1; i++){
 					// second comparison
 					var j = i + 1;
-					if (d === transcript[i] && w === transcript[j]){
+					if (d === wordArray[i] && w === wordArray[j]){
 						counts[k] += 1;
 					}
 				}
 			} else {
-				//cycles through whole transcript
+			// 	//cycles through whole wordArray
 				counts[counts.length-1] = 0;
-				for (var q = 0; q < transcript.length; q++){
-					if (transcript[q] === filler){
+				for (var q = 0; q < wordArray.length; q++){
+					if (wordArray[q] === filler){
 						counts[k] += 1;
-					} else if (transcript[q][1] === "*"){ //THIS NEEDS TO BE MADE CONDITIONAL
-						counts[counts.length-1] += 1;
 					}
-				} 
+					///This finds and counts the swears in the transcript
+					// else if (wordArray[q][1] === "*"){ //THIS NEEDS TO BE MADE CONDITIONAL
+			// 			counts[counts.length-1] += 1;
+			// 		}
+				}
 			}
 		}
 		console.log("fillers:", fillers);
@@ -122,42 +124,45 @@ $(function () {
 		var word = $("#newFiller").val();
 		if (fillers.indexOf(word) === -1){
 			fillers.push(word);
+			console.log("before post after push", fillers);
 			$.post("/words.json", {
 				word: {
 					word: word
 				}
 			}).done(function (createdWord){
-				console.log("got here!");
-				console.log(fillers);
-				$("#displayFillers").append(createdWord.word + "<button class=\"delete-user-word\" data-word-id=\"<%= w.id %>\"> X </button>" +"<br>");
+				console.log("after post before display", fillers);
+				 
+				$("#displayFillers").append("<div class= 'fillerItem'><div class='actualWord'>"+ createdWord.word + "</div><button class=\"delete-user-word\" data-word-id=\"<%= w.id %>\"> X </button>" +"<br>");
+			console.log("should have put this on the page ", createdWord.word);
 			})
+
 		}
+		// location.reload();
 	});
 
 
-
+//  Not working on heroku
 $(".delete-user-word").click(function(){
 	var wordId = $(this).data("word-id");
 	var wordVal = $(this).data("word");
-	console.log("word ID" + wordId);
+	// console.log("word ID" + wordId);
 	var $word = this.closest(".fillerItem");
-	console.log("$word  :::" , $word);
+	// console.log("$word  :::" , $word);
 	$.ajax({
 		url: "/words/"+ wordId + ".json",
 		type: "PATCH"
 	}).done(function(){
 		indexWord = fillers.indexOf(wordVal);
 		fillers.splice(indexWord, 1);
-		console.log(fillers);
+		console.log("Fillers post delete ", fillers);
 		//console.log()
 		$word.remove();
-		console.log(this)
+		// console.log(this)
 		console.log("DELETED!!!");
 	});
 });
 
 
- 
 //.done(function (done){
 // 			console.log("Deleted");
 // 			$("#displayFillers").append(createdWord.word + "<br>");
@@ -206,8 +211,11 @@ $(".delete-user-word").click(function(){
 
 	
 	}; // end timer
-	var fillerWordCounts;
 
+	var fillerWordCounts; //this variable is an array that we get from pickFillers eventually
+	//it contains just the counts
+
+	//This is to put the filler word counts on the page
 	var showResults = function(){
 			str = "";
 
@@ -218,7 +226,7 @@ $(".delete-user-word").click(function(){
 			console.log("fillers in show results: ", fillers);
 			return str;
 	};
-	
+
 
 
 	$(".stop-button").click(function(){
@@ -227,12 +235,10 @@ $(".delete-user-word").click(function(){
 
 		setTimeout(function(){
 			console.log("TRANSCRIPT!!!! : ", wordArray);
-			fillerWordCounts = pickFillers(wordArray, fillers);
+			fillerWordCounts = pickFillers(wordArray, fillers); //contains counts
 			console.log("FillerWordCounts???? ", fillerWordCounts);
 		}, 2000);
-		
 
-		
 		//console.log("stopClicked in stop button: " + stopClicked);
 		clearInterval(newTimer);
 
@@ -245,40 +251,36 @@ $(".delete-user-word").click(function(){
 	//});
 
 		myVar = setTimeout(function(){
-			//editing this right now 
-			if (fillers.indexOf("*swears") === -1){
-				fillers.push("*swears");
-				console.log("adding swears");
-			};
+			//adds swears to filler array...?
+			// if (fillers.indexOf("*swears") === -1){
+			// 	fillers.push("*swears");
+			// 	console.log("adding swears");
+			// };
 
-			console.log("FillerWordCounts!!! ", fillerWordCounts.length, fillers.length);
 			obj = toObj(fillers, fillerWordCounts);
 
-			console.log("THESE FILLERS RIGHT NOW...", fillers);
-			console.log("OBJ IS", obj)
+			console.log("OBJ IS", obj);
 
 			$.post('/messing', {wordHash: obj, speech_attempt: {time: seconds}}, function(data) {
 				console.log(data);
-			})
+			});
 
 			$("#textHere").html(wordArray);
 			$("#count").html(showResults());
 		},4000);
 
 	});
-		
-			
+
+
+//takes the two arrays, and puts the corresponding values as key:value pairs
 	var toObj = function(fillers, counts){
 	  var obj = {};
-	  console.log("Filler!!: ", fillers);
-	  console.log("Counts!!: ", counts);
 	  for (var i = 0; i < fillers.length; i++){
 	  obj[fillers[i]] = counts[i];
 	  }
 	return obj;
 	};
-		
-		
+
 
 
 
